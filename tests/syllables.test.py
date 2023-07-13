@@ -78,7 +78,77 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
                            [{'IPA': 'ɒ', "classes": ["vowels"], 'types': ['retracted','rounded','low'], 'forbidden': []}, 
                             {'IPA': 'm̥', 'classes': ["nasals", "occlusives"], 'types': ['voiceless','frontcon','bilabial'], 'forbidden': []}]}])
 
-    
+
+    def test_two_syllables_that_require_no_modification(self):
+        syllables_list = []
+        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []}, 
+                                                       {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []}]})
+        syllables_list.append({'stress': None, 'syllable': 'ky', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}, 
+                                                       {'IPA': 'y', "classes": ["vowels"], 'types': ['front','raised','unrounded','high'], 'forbidden': []}]})
+        returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
+
+        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'am', 'sounds': 
+                                                [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []},
+                                                 {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []}]}, 
+                                                 {'stress': None, 'syllable': 'ky', 'sounds': 
+                                                  [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}, 
+                                                   {'IPA': 'y', "classes": ["vowels"], 'types': ['front','raised','unrounded','high'], 'forbidden': []}]}])
+
+
+    def test_two_syllables_with_one_missing_vowel(self):
+        syllables_list = []
+        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []}, 
+                                                       {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []}]})
+        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}]})
+        returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
+
+        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'amk', 'sounds': 
+                                                [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []},
+                                                 {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []},
+                                                 {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}
+                                                 ]}])
+        
+
+    def test_two_syllables_with_one_missing_vowel_in_first(self):
+        syllables_list = []
+        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}]})
+        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []}, 
+                                                       {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []}]})
+        returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
+
+        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'kam', 'sounds': 
+                                                [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []},
+                                                 {'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []},
+                                                 {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []}
+                                                 
+                                                 ]}])
+        
+
+    def test_two_illegal_syllables_with_one_missing_vowel(self):
+        syllables_list = []
+        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []},
+                                                                            {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []}]})
+        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}, 
+                                                                           {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}]})
+        returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
+
+        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'amkk', 'sounds': 
+                                                [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'forbidden': []},
+                                                 {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'forbidden': []},
+                                                 {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []},
+                                                 {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}
+                                                 ]}])
+                                                 
+
+    def test_only_two_illegal_syllables(self):
+        syllables_list = []
+        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}]})
+        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}]})
+        returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
+
+        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}]},
+                                               {'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'forbidden': []}]}])
+                                                 
 
 if __name__ == '__main__':
     unittest.main()
