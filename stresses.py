@@ -12,7 +12,27 @@
 # Possible rules:
 
 
+# Penultimate syllable stress for: Two-syllable nouns and adjectives
 
-# Penultimate syllable
+# Antepenultimate syllable stress for: 
+    #Two-syllable verbs
+    # Three or more syllables in: Nouns, adjectives, adverbs
 
-# First syllable
+# Preantepenultimate syllable stress for: Three or more syllable verbs
+
+# Maintain original stress in: Compound words
+
+# Base/root word stress for words with prefixes/suffixes
+
+# Stress shift for changes in word form
+
+# Irregular stress patterns
+
+# Vowel length
+
+# Suffixes and Word Endings
+
+testdata = 0
+
+if __name__ == "__main__":
+    pass
