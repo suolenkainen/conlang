@@ -1,0 +1,8 @@
+{
+    "rules": {
+      "illegal clusters": [
+        "ab",
+        "dg"
+      ]
+    }
+  }

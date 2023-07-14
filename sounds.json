@@ -1,0 +1,2492 @@
+{
+  "vowels": [
+    {
+      "IPA": "i",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "y",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "unrounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0268",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0289",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026f",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "u",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026a",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028f",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028a",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "e",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00f8",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0258",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0275",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0264",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "o",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "e\u031e",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00f8\u031e",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0259",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0264\u031e",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "o\u031e",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "rounded",
+        "high"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u025b",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0153",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "rounded",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u025c",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u025e",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "rounded",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028c",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0254",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "rounded",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00e6",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "a",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0276",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "front",
+        "raised",
+        "rounded",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0250",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00e4",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0251",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "low"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0252",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "retracted",
+        "rounded",
+        "low"
+      ],
+      "rules": []
+    }
+  ],
+  "consonants": [
+    {
+      "IPA": "m\u0325",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "m",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0271",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "n\u033c",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "linguodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "n\u0325",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveloar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "n",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveloar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0273\u030a",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0273",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0272\u030a",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0272",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u014b\u030a",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u014b",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0274",
+      "classes": [
+        "nasals",
+        "occlusives"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "p",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "b",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "p\u032a",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "b\u032a",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t\u033c",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "linguolabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d\u033c",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "linguolabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0288",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0256",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "c",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u025f",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "k",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0261",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "q",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0262",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u02a1",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "pharyngeal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0294",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "glottal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "k\u0361p",
+      "classes": [
+        "plosives",
+        "occlusives",
+        "obstruents"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "ts",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "dz",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t\u0320\u0283",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d\u0320\u0292",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0288\u0282",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0256\u0290",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t\u0255",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d\u0291",
+      "classes": [
+        "stridents",
+        "sibilants",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "p\u0278",
+      "classes": [
+        "stridents",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "b\u03b2",
+      "classes": [
+        "stridents",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "p\u032af",
+      "classes": [
+        "stridents",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "b\u032av",
+      "classes": [
+        "stridents",
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t\u032a\u03b8",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "dental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d\u032a\u00f0",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "dental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t\u0279\u031d\u030a",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d\u0279\u031d",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t\u0320\u0279\u0320\u030a\u02d4",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d\u0320\u0279\u0320\u02d4",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "c\u00e7",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u025f\u029d",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "kx",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0261\u0263",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "q\u03c7",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0262\u0281",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u02a1\u02a2",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "pharyngeal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0294h",
+      "classes": [
+        "occlusives",
+        "obstruents",
+        "affricates"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "glottal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "s",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "z",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0283",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0292",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0282",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0290",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0255",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0291",
+      "classes": [
+        "sibilants",
+        "stridents",
+        "obstruents",
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0278",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u03b2",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "f",
+      "classes": [
+        "fricatives",
+        "continuants",
+        "stridents"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "v",
+      "classes": [
+        "fricatives",
+        "continuants",
+        "stridents"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u03b8\u033c",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "linguolabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00f0\u033c",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "linguolabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u03b8",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "dental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00f0",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "dental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u03b8\u0320",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00f0\u0320",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0279\u0320\u030a\u02d4",
+      "classes": [
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0279\u0320\u02d4",
+      "classes": [
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "postalveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027b\u02d4",
+      "classes": [
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u00e7",
+      "classes": [
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u029d",
+      "classes": [
+        "fricatives",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "x",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0263",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u03c7",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants",
+        "stridents"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0281",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants",
+        "stridents",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0127",
+      "classes": [
+        "fricatives",
+        "continuants",
+        "stridents",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "pharyngeal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0295",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants",
+        "stridents",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "pharyngeal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "h",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants",
+        "stridents",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "glottal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0266",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants",
+        "stridents",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "glottal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028d",
+      "classes": [
+        "continuants",
+        "obstruents",
+        "semivowels"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0267",
+      "classes": [
+        "fricatives",
+        "obstruents",
+        "continuants"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028b",
+      "classes": [
+        "continuants",
+        "vocoids",
+        "approximants"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0279",
+      "classes": [
+        "continuants",
+        "vocoids",
+        "approximants",
+        "rhotic",
+        "liquid"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveloar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027b",
+      "classes": [
+        "continuants",
+        "vocoids",
+        "approximants",
+        "rhotic",
+        "liquid"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "j",
+      "classes": [
+        "continuants",
+        "vocoids",
+        "approximants",
+        "rhotic",
+        "liquid"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0270",
+      "classes": [
+        "continuants",
+        "vocoids",
+        "approximants",
+        "semivowels"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0294\u031e",
+      "classes": [
+        "continuants",
+        "vocoids",
+        "approximants",
+        "semivowels"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "glottal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "w",
+      "classes": [
+        "continuants",
+        "vocoids",
+        "approximants",
+        "semivowels"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u2c71\u031f",
+      "classes": [
+        "vibrant",
+        "tapflap"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u2c71",
+      "classes": [
+        "vibrant",
+        "tapflap"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "labiodental"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027e\u033c",
+      "classes": [
+        "vibrant",
+        "tapflap",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "linguolabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027e\u0325",
+      "classes": [
+        "vibrant",
+        "tapflap",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027e",
+      "classes": [
+        "vibrant",
+        "tapflap",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027d\u030a",
+      "classes": [
+        "vibrant",
+        "tapflap",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027d",
+      "classes": [
+        "vibrant",
+        "tapflap",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0262\u0306",
+      "classes": [
+        "vibrant",
+        "tapflap",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u02a1\u0306",
+      "classes": [
+        "vibrant",
+        "tapflap",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "pharyngeal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0299\u0325",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0299",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "bilabial"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "r\u0325",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "r",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027d\u030ar\u0325",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027dr",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0280\u0325",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0280",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u029c",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "pharyngeal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u02a2",
+      "classes": [
+        "vibrant",
+        "trills",
+        "vocoids",
+        "rhotics",
+        "liquids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "pharyngeal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "t\u026c",
+      "classes": [
+        "vibrant",
+        "tapflap"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "d\u026e",
+      "classes": [
+        "fricatives",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0288\u026d\u030a\u02d4",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0256\u026d\u02d4",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "c\u028e\u031d\u030a",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u025f\u028e\u031d",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "k\u029f\u031d\u030a",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u0261\u029f\u031d",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026c",
+      "classes": [
+        "fricatives",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026e",
+      "classes": [
+        "fricatives",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026d\u030a\u02d4",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026d\u02d4",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028e\u031d\u030a",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028e\u031d",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u029f\u031d\u030a",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u029f\u031d",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "l",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026d",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028e",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u029f",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u029f\u0320",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "velar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027a\u0325",
+      "classes": [
+        "liquids",
+        "laterals",
+        "rhodics",
+        "tapflaps"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u027a",
+      "classes": [
+        "liquids",
+        "laterals",
+        "rhodics",
+        "tapflaps"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "alveolar"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026d\u0325\u0306",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiceless",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u026d\u0306",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "frontcon",
+        "retroflex"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u028e\u0306",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "palatal"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u029f\u0306",
+      "classes": [
+        "affricates",
+        "laterals",
+        "continuants",
+        "vocoids"
+      ],
+      "types": [
+        "voiced",
+        "backcon",
+        "uvular"
+      ],
+      "rules": []
+    }
+  ]
+}

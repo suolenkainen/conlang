@@ -4,7 +4,7 @@ Functions to modify sound changes in conlangs
 ## Sounds
 Includes most IPA sounds.
 
-Syntax: {'IPA': 'i', "classes": [], 'types': [], 'forbidden': []}
+Syntax: {'IPA': 'i', "classes": [], 'types': [], 'rules': []}
 
 CLASSES
 - vowels (Vowel)
@@ -37,7 +37,7 @@ TYPES
 - rounded (Vowel)
 - retracted (Vowel)
 - raised (Vowel)
-- forbidden (Vowel)
+- rules (Vowel)
 - low (Vowel)
 - unrounded (Vowel)
 - voiceless (Consonant)
@@ -59,7 +59,7 @@ TYPES
 - pharyngeal (Consonant)
 - dental (Consonant)
 
-- forbidden - Rules where the sound is forbidden (TBD)
+- rules - Rules where the sound is rules (TBD)
 
 ## Stresses
 
@@ -87,6 +87,6 @@ Length of the syllable can also affect the placement of the stress
 
 ## Syntaxes
 The following stntaxes are used in this program:
-- Sounds: {'IPA': '', 'classes': [], 'types': [], 'forbidden': []}
+- Sounds: {'IPA': '', 'classes': [], 'types': [], 'rules': []}
 - Syllables: {'sounds': [{'IPA': ''...},...], 'stressed': True}
 - Words: {'syllables': [{'sounds': [{'IPA': ''...},...], 'stressed': True}, ..., TBD]}
