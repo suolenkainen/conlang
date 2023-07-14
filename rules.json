@@ -1,8 +1,12 @@
 {
-    "rules": {
-      "illegal clusters": [
-        "ab",
-        "dg"
+    "clusters": {
+      "illegal consonant clusters": [
+        "ks",
+        "sk"
+      ],
+      "illegal vowel clusters": [
+        "ei",
+        "ie"
       ]
     }
   }

@@ -50,18 +50,22 @@ def redefine_more_than_one_syllables(list_of_syllables = None):
 
         for j in illegal_indexes:
             illegal_sounds = list_of_syllables[j]["sounds"]
-            for ill in illegal_sounds:
-                ill["rules"]= rules.illegal_clusters()
+            not_combined = True
             for k in legal_indexes:
                 for a in range(len(list_of_syllables)):
-                    if k+a == j:
-                        list_of_syllables[k]["sounds"].extend(illegal_sounds)
+                    if k+a == j and not_combined:
+                        target_syllable = list_of_syllables[k]
+                        rules.analyze_rules(target_syllable, illegal_sounds)
+                        target_syllable["sounds"].extend(illegal_sounds)
                         list_of_syllables[k]["syllable"] += "".join(IPA["IPA"] for IPA in illegal_sounds)
-
-                    elif k-a == j:
-                        original_sounds = list_of_syllables[k]["sounds"]
-                        list_of_syllables[k]["sounds"] = illegal_sounds + original_sounds
-                        list_of_syllables[k]["syllable"] = "".join(IPA["IPA"] for IPA in illegal_sounds) + list_of_syllables[k]["syllable"]
+                        not_combined = False
+                    elif k-a == j and not_combined:
+                        target_syllable = list_of_syllables[k]
+                        rules.analyze_rules(illegal_sounds, target_syllable)
+                        original_sounds = target_syllable["sounds"]
+                        target_syllable["sounds"] = illegal_sounds + original_sounds
+                        list_of_syllables[k]["syllable"] = "".join(IPA["IPA"] for IPA in illegal_sounds) + target_syllable["syllable"]
+                        not_combined = False
 
 
         list_of_syllables = [syll for i, syll in enumerate(list_of_syllables) if i not in illegal_indexes]

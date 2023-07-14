@@ -96,9 +96,9 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
                                                   [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
                                                    {'IPA': 'y', "classes": ["vowels"], 'types': ['front','raised','unrounded','high'], 'rules': []}]}])
 
-    @patch('rules.illegal_clusters')  # Mock the return_rules
-    def test_two_syllables_with_one_missing_vowel(self, mock_illegal_clusters):
-        mock_illegal_clusters.return_value = []
+    @patch('rules.analyze_rules')  # Mock the return_rules
+    def test_two_syllables_with_one_missing_vowel(self, mock_analyze_rules):
+        mock_analyze_rules.return_value = []
 
         syllables_list = []
         syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
@@ -112,9 +112,9 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
                                                  {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}
                                                  ]}])
         
-    @patch('rules.illegal_clusters')  # Mock the return_rules
-    def test_two_syllables_with_one_missing_vowel_in_first(self, mock_illegal_clusters):
-        mock_illegal_clusters.return_value = []
+    @patch('rules.analyze_rules')  # Mock the return_rules
+    def test_two_syllables_with_one_missing_vowel_in_first(self, mock_analyze_rules):
+        mock_analyze_rules.return_value = []
         
         syllables_list = []
         syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
@@ -128,9 +128,9 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
                                                  {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}
                                                  ]}])
         
-    @patch('rules.illegal_clusters')  # Mock the return_rules
-    def test_three_syllables_with_one_missing_vowel_in_first_and_third(self, mock_illegal_clusters):
-        mock_illegal_clusters.return_value = []
+    @patch('rules.analyze_rules')  # Mock the return_rules
+    def test_three_syllables_with_one_missing_vowel_in_first_and_third(self, mock_analyze_rules):
+        mock_analyze_rules.return_value = []
         
         syllables_list = []
         syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
@@ -141,25 +141,25 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
                                                        {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
-        # self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'kam', 'sounds': 
-        #                                         [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []},
-        #                                          {'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
-        #                                          {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}
-        #                                          ]},
-        #                                        {'stress': None, 'syllable': 'kam', 'sounds': 
-        #                                         [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []},
-        #                                          {'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
-        #                                          {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}
-        #                                          ]}])
+        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'kamk', 'sounds': 
+                                                [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []},
+                                                 {'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
+                                                 {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []},
+                                                 {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}
+                                                 ]},
+                                               {'stress': None, 'syllable': 'am', 'sounds': 
+                                                [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
+                                                 {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}
+                                                 ]}])
         
-    @patch('rules.illegal_clusters')  # Mock the return_rules
-    def test_two_illegal_syllables_with_one_missing_vowel(self, mock_illegal_clusters):
-        mock_illegal_clusters.return_value = []
+    @patch('rules.analyze_rules')  # Mock the return_rules
+    def test_two_illegal_syllables_with_one_missing_vowel(self, mock_analyze_rules):
+        mock_analyze_rules.return_value = []
         
         syllables_list = []
         syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                                             {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'syllable': 'kk', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
                                                                            {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
