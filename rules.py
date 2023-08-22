@@ -15,12 +15,15 @@ with open(file_path, 'r') as file:
 
 
 def analyze_rules(transferring_sound=None, target_syllable=None, append_to_syllable=True):
-    # tee funktio, missä sisään tulee ääni ja kohde tavu
-    # tarkista, onko siirtyvässä äänessä kieltoja, mikä estää liittämisen
+    # tee funktio, missä sisään tulee kohdetavu ja liitettävä tavu
+    # tarkista ääni kerrallaan, onko siirtyvässä tavussa kieltoja, mikä estää liittämisen
+    # jos on kielto, lisää vain sopiva ääni ja erota ei-sopivat omaksi tavuksi 
+    # esim: "pa" ja "kk", missä kons.gem. codassa on kielletty -> tavu"pak" ja "k"
     # oletus on, että lisätään tavun perään, mutta se voidaan lisätä myös eteen
+    # esim: "kk" ja "ap", missä kons.gem. onsetissa on kielletty -> "k" ja "k"
     # palautetaan 
     print(rules_list)
-    return transferring_sound, target_syllable
+    return None
 
 
 def set_rules_for_sounds(rules_list=None, sounds_list=None):

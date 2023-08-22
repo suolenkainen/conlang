@@ -36,11 +36,11 @@ def combine_sounds_to_syllable(list_of_sounds = []):
 
 
 def redefine_more_than_one_syllables(list_of_syllables = None):
-    # The function receives a pair of syllables (syntax in README.md)
-    # The function checks that each syllable is contains a vowel sound (making it legal)
-    # If the syllable is 
+    # The function receives a list of syllables (syntax in README.md)
     # If a list contains no legal syllables, the function returns "None"
-    # The function combines adds the illegal syllable (or parts of it) to the legal syllable if the combination is allowed
+    # Each syllable is assigned to an index and they are divided into legal and illegal lists
+    # Illegal syllable is added to a legal syllable if it is allowed
+    # If an illegal syllable is split, it can be added to the following syllable, otherwise it is lost.
 
     if list_of_syllables is None:
         return None
@@ -64,20 +64,23 @@ def redefine_more_than_one_syllables(list_of_syllables = None):
             for k in legal_indexes:
                 for a in range(len(list_of_syllables)):
                     if k+a == j and not_combined:
+                        not_combined = False
                         # Add illegal sound in after a legal syllable
                         target_syllable = list_of_syllables[k]
-                        rules.analyze_rules(target_syllable, illegal_sounds)
-                        target_syllable["sounds"].extend(illegal_sounds)
-                        list_of_syllables[k]["syllable"] += "".join(IPA["IPA"] for IPA in illegal_sounds)
+                        add_sounds, remaining_sound = rules.analyze_rules(target_syllable, illegal_sounds)
+                        if remaining_sound:
+                            not_combined = True
+                            illegal_sounds = remaining_sound
+                        target_syllable["sounds"].extend(add_sounds)
+                        list_of_syllables[k]["syllable"] += "".join(IPA["IPA"] for IPA in add_sounds)
+                    if k-a == j and not_combined:
                         not_combined = False
-                    elif k-a == j and not_combined:
                         # Add illegal sound in front of a legal syllable
                         target_syllable = list_of_syllables[k]
-                        rules.analyze_rules(illegal_sounds, target_syllable, False)
+                        add_sounds, remaining_sound = rules.analyze_rules(illegal_sounds, target_syllable, False)
                         original_sounds = target_syllable["sounds"]
-                        target_syllable["sounds"] = illegal_sounds + original_sounds
-                        list_of_syllables[k]["syllable"] = "".join(IPA["IPA"] for IPA in illegal_sounds) + target_syllable["syllable"]
-                        not_combined = False
+                        target_syllable["sounds"] = add_sounds + original_sounds
+                        list_of_syllables[k]["syllable"] = "".join(IPA["IPA"] for IPA in add_sounds) + target_syllable["syllable"]
 
 
         list_of_syllables = [syll for i, syll in enumerate(list_of_syllables) if i not in illegal_indexes]
