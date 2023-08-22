@@ -14,9 +14,13 @@ with open(file_path, 'r') as file:
 
 
 
-def analyze_rules(transferring_sounds=None, target_syllable=None):
+def analyze_rules(transferring_sound=None, target_syllable=None, append_to_syllable=True):
+    # tee funktio, missä sisään tulee ääni ja kohde tavu
+    # tarkista, onko siirtyvässä äänessä kieltoja, mikä estää liittämisen
+    # oletus on, että lisätään tavun perään, mutta se voidaan lisätä myös eteen
+    # palautetaan 
     print(rules_list)
-    return transferring_sounds, target_syllable
+    return transferring_sound, target_syllable
 
 
 def set_rules_for_sounds(rules_list=None, sounds_list=None):

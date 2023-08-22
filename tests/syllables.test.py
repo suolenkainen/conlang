@@ -15,7 +15,7 @@ class Combine_Sounds_to_Syllable(unittest.TestCase):
 
         self.assertEqual(result, None)
     
-    def test_feed_sounds_and_expect_syllable(self):
+    def test_feed_2_sounds_and_expect_legal_syllable(self):
 
         list_of_sounds = [
             {'IPA': 'ɒ', "classes": ["vowels"], 'types': ['retracted','rounded','low'], 'rules': []},
@@ -27,6 +27,38 @@ class Combine_Sounds_to_Syllable(unittest.TestCase):
         self.assertEqual(returning_syllable["sounds"], list_of_sounds)
         self.assertEqual(returning_syllable["syllable"], "ɒm̥")
         self.assertEqual(returning_syllable["stress"], None)
+        self.assertEqual(returning_syllable["legal"], True)
+
+
+    def test_feed_2_sounds_and_expect_illegal_syllable(self):
+
+        list_of_sounds = [
+            {'IPA': 'm̥', 'classes': ["nasals", "occlusives"], 'types': ['voiceless','frontcon','bilabial'], 'rules': []},
+            {'IPA': 's', 'classes': ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], 'types': ['voiceless','frontcon','alveolar'], 'rules': []}
+        ]
+        
+        returning_syllable = syllables.combine_sounds_to_syllable(list_of_sounds)
+
+        self.assertEqual(returning_syllable["sounds"], list_of_sounds)
+        self.assertEqual(returning_syllable["syllable"], "m̥s")
+        self.assertEqual(returning_syllable["stress"], None)
+        self.assertEqual(returning_syllable["legal"], False)
+        
+
+    def test_feed_3_sounds_and_expect_legal_syllable(self):
+
+        list_of_sounds = [
+            {'IPA': 'ɒ', "classes": ["vowels"], 'types': ['retracted','rounded','low'], 'rules': []},
+            {'IPA': 'm̥', 'classes': ["nasals", "occlusives"], 'types': ['voiceless','frontcon','bilabial'], 'rules': []},
+            {'IPA': 's', 'classes': ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], 'types': ['voiceless','frontcon','alveolar'], 'rules': []}
+        ]
+        
+        returning_syllable = syllables.combine_sounds_to_syllable(list_of_sounds)
+
+        self.assertEqual(returning_syllable["sounds"], list_of_sounds)
+        self.assertEqual(returning_syllable["syllable"], "ɒm̥s")
+        self.assertEqual(returning_syllable["stress"], None)
+        self.assertEqual(returning_syllable["legal"], True)
 
     
     def test_feed_no_sounds(self):
@@ -71,28 +103,28 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
 
     def test_feed_single_syllable_and_get_the_same_back(self):
         syllables_list = []
-        syllables_list.append({'stress': None, 'syllable': 'ɒm̥', 'sounds': [{'IPA': 'ɒ', "classes": ["vowels"], 'types': ['retracted','rounded','low'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'ɒm̥', 'sounds': [{'IPA': 'ɒ', "classes": ["vowels"], 'types': ['retracted','rounded','low'], 'rules': []}, 
                                                        {'IPA': 'm̥', 'classes': ["nasals", "occlusives"], 'types': ['voiceless','frontcon','bilabial'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
         self.assertEqual(returning_syllables, 
-                         [{'stress': None, 'syllable': 'ɒm̥', 'sounds': 
+                         [{'stress': None, 'legal': True, 'syllable': 'ɒm̥', 'sounds': 
                            [{'IPA': 'ɒ', "classes": ["vowels"], 'types': ['retracted','rounded','low'], 'rules': []}, 
                             {'IPA': 'm̥', 'classes': ["nasals", "occlusives"], 'types': ['voiceless','frontcon','bilabial'], 'rules': []}]}])
 
 
     def test_two_syllables_that_require_no_modification(self):
         syllables_list = []
-        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
                                                        {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'ky', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'ky', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
                                                        {'IPA': 'y', "classes": ["vowels"], 'types': ['front','raised','unrounded','high'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
-        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'am', 'sounds': 
+        self.assertEqual(returning_syllables, [{'stress': None, 'legal': True, 'syllable': 'am', 'sounds': 
                                                 [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                  {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]}, 
-                                                 {'stress': None, 'syllable': 'ky', 'sounds': 
+                                                 {'stress': None, 'legal': True, 'syllable': 'ky', 'sounds': 
                                                   [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
                                                    {'IPA': 'y', "classes": ["vowels"], 'types': ['front','raised','unrounded','high'], 'rules': []}]}])
 
@@ -101,12 +133,12 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
         mock_analyze_rules.return_value = []
 
         syllables_list = []
-        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
                                                        {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
+        syllables_list.append({'stress': None, 'legal': False, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
-        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'amk', 'sounds': 
+        self.assertEqual(returning_syllables, [{'stress': None, 'legal': True, 'syllable': 'amk', 'sounds': 
                                                 [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                  {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []},
                                                  {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}
@@ -117,12 +149,12 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
         mock_analyze_rules.return_value = []
         
         syllables_list = []
-        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': False, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
                                                        {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
-        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'kam', 'sounds': 
+        self.assertEqual(returning_syllables, [{'stress': None, 'legal': True, 'syllable': 'kam', 'sounds': 
                                                 [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []},
                                                  {'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                  {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}
@@ -133,21 +165,21 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
         mock_analyze_rules.return_value = []
         
         syllables_list = []
-        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': False, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
                                                        {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': False, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}, 
                                                        {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
-        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'kamk', 'sounds': 
+        self.assertEqual(returning_syllables, [{'stress': None, 'legal': True, 'syllable': 'kamk', 'sounds': 
                                                 [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []},
                                                  {'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                  {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []},
                                                  {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}
                                                  ]},
-                                               {'stress': None, 'syllable': 'am', 'sounds': 
+                                               {'stress': None, 'legal': True, 'syllable': 'am', 'sounds': 
                                                 [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                  {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}
                                                  ]}])
@@ -157,13 +189,13 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
         mock_analyze_rules.return_value = []
         
         syllables_list = []
-        syllables_list.append({'stress': None, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
+        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                                             {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'kk', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
+        syllables_list.append({'stress': None, 'legal': False, 'syllable': 'kk', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}, 
                                                                            {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
-        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'amkk', 'sounds': 
+        self.assertEqual(returning_syllables, [{'stress': None, 'legal': True, 'syllable': 'amkk', 'sounds': 
                                                 [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []},
                                                  {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []},
                                                  {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []},
@@ -173,13 +205,14 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
 
     def test_only_two_illegal_syllables(self):
         syllables_list = []
-        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
-        syllables_list.append({'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
+        syllables_list.append({'stress': None, 'legal': False, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
+        syllables_list.append({'stress': None, 'legal': False, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]})
         returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
 
-        self.assertEqual(returning_syllables, [{'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]},
-                                               {'stress': None, 'syllable': 'k', 'sounds': [{'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}]}])
+        self.assertEqual(returning_syllables, None)
                                                  
+                                                
+    # testi, missä mockataan "säännön rikkominen"
 
 if __name__ == '__main__':
     unittest.main()

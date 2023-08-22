@@ -88,5 +88,5 @@ Length of the syllable can also affect the placement of the stress
 ## Syntaxes
 The following stntaxes are used in this program:
 - Sounds: {'IPA': '', 'classes': [], 'types': [], 'rules': []}
-- Syllables: {'sounds': [{'IPA': ''...},...], 'stressed': True}
+- Syllables: {'sounds': [{'IPA': ''...},...], 'stressed': True, 'legal: True}
 - Words: {'syllables': [{'sounds': [{'IPA': ''...},...], 'stressed': True}, ..., TBD]}
