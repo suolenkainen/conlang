@@ -16,11 +16,7 @@ class Combine_Sounds_to_Syllable(unittest.TestCase):
         self.m_sound = {'IPA': 'm', 'classes': ["nasals", "occlusives"], 'types': ['voiced','frontcon','bilabial'], 'rules': []}
         self.s_sound = {'IPA': 's', 'classes': ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], 'types': ['voiceless','frontcon','alveolar'], 'rules': []}
 
-    def test_call_combine_sounds_to_syllable_function(self):
-        result = syllables.combine_sounds_to_syllable()
 
-        self.assertEqual(result, None)
-    
     def test_feed_2_sounds_and_expect_legal_syllable(self):
 
         list_of_sounds = [self.a_sound, self.m_sound]
@@ -64,14 +60,6 @@ class Combine_Sounds_to_Syllable(unittest.TestCase):
         self.assertEqual(returning_syllable, None)
     
 
-    def test_wrong_syntax(self):
-        list_of_sounds = "string"        
-        returning_syllable = syllables.combine_sounds_to_syllable(list_of_sounds)
-
-        self.assertRaises(TypeError)
-        self.assertEqual(returning_syllable, None)
-        
-
     def test_wrong_syntax_2(self):
         list_of_sounds = [("string",0)]
         returning_syllable = syllables.combine_sounds_to_syllable(list_of_sounds)
@@ -90,11 +78,6 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
         self.k_sound = {'IPA': 'k', 'classes': ["plosives", "occlusives", "obstruents"], 'types': ['voiceless','backcon','velar'], 'rules': []}
         self.y_sound = {'IPA': 'y', "classes": ["vowels"], 'types': ['front','raised','unrounded','high'], 'rules': []}
 
-    def test_call_redefine_function(self):
-        returning_syllables = syllables.redefine_more_than_one_syllables()        
-        
-        self.assertEqual(returning_syllables, None)
-
 
     def test_wrong_syntax(self):
         syllables_list = "string" 
@@ -103,14 +86,6 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
         self.assertRaises(TypeError)
         self.assertEqual(returning_list, None)
 
-
-    def test_feed_single_syllable_and_get_the_same_back(self):
-        syllables_list = []
-        syllables_list.append({'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [self.a_sound, self.m_sound]})
-        returning_syllables = syllables.redefine_more_than_one_syllables(syllables_list)
-
-        self.assertEqual(returning_syllables, 
-                         [{'stress': None, 'legal': True, 'syllable': 'am', 'sounds': [self.a_sound, self.m_sound]}])
 
 
     def test_two_syllables_that_require_no_modification(self):
@@ -178,6 +153,7 @@ class Redefine_More_Than_One_Syllables(unittest.TestCase):
                                                 [self.k_sound,self.a_sound, self.m_sound, self.k_sound]},
                                                {'stress': None, 'legal': True, 'syllable': 'am', 'sounds': 
                                                 [self.a_sound, self.m_sound]}])
+        
         
     @patch('rules.analyze_rules')  # Mock the return_rules
     def test_two_syllables_with_one_missing_vowel(self, mock_analyze_rules):

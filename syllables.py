@@ -67,20 +67,20 @@ def redefine_more_than_one_syllables(list_of_syllables = None):
                         not_combined = False
                         # Add illegal sound in after a legal syllable
                         target_syllable = list_of_syllables[k]
-                        add_sounds, remaining_sound = rules.analyze_rules(target_syllable, illegal_sounds)
-                        if remaining_sound:
+                        valid_sounds, remaining_sounds = rules.analyze_rules(illegal_sounds, target_syllable)
+                        if remaining_sounds:
                             not_combined = True
-                            illegal_sounds = remaining_sound
-                        target_syllable["sounds"].extend(add_sounds)
-                        list_of_syllables[k]["syllable"] += "".join(IPA["IPA"] for IPA in add_sounds)
+                            illegal_sounds = remaining_sounds
+                        target_syllable["sounds"].extend(valid_sounds)
+                        list_of_syllables[k]["syllable"] += "".join(IPA["IPA"] for IPA in valid_sounds)
                     if k-a == j and not_combined:
                         not_combined = False
                         # Add illegal sound in front of a legal syllable
                         target_syllable = list_of_syllables[k]
-                        add_sounds, remaining_sound = rules.analyze_rules(illegal_sounds, target_syllable, False)
+                        valid_sounds, remaining_sounds = rules.analyze_rules(illegal_sounds, target_syllable, False)
                         original_sounds = target_syllable["sounds"]
-                        target_syllable["sounds"] = add_sounds + original_sounds
-                        list_of_syllables[k]["syllable"] = "".join(IPA["IPA"] for IPA in add_sounds) + target_syllable["syllable"]
+                        target_syllable["sounds"] = valid_sounds + original_sounds
+                        list_of_syllables[k]["syllable"] = "".join(IPA["IPA"] for IPA in valid_sounds) + target_syllable["syllable"]
 
 
         list_of_syllables = [syll for i, syll in enumerate(list_of_syllables) if i not in illegal_indexes]

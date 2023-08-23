@@ -1,12 +1,24 @@
 {
     "clusters": {
-      "illegal consonant clusters": [
-        "ks",
-        "sk"
-      ],
-      "illegal vowel clusters": [
-        "ei",
-        "ie"
+      "illegal clusters": [
+        ["k","s"],
+        ["s","k"],
+        ["e","i"],
+        ["i","e"]
       ]
+    },
+    "positions": {
+      "illegal codas": [
+        "k"
+      ],
+      "illegal onset" : [
+        
+      ],
+      "illegal word end" : [
+        
+      ]
+    },
+    "syllable": {
+
     }
   }

@@ -14,18 +14,49 @@ with open(file_path, 'r') as file:
 
 
 
-def analyze_rules(transferring_sound=None, target_syllable=None, append_to_syllable=True):
-    # tee funktio, missä sisään tulee kohdetavu ja liitettävä tavu
-    # tarkista ääni kerrallaan, onko siirtyvässä tavussa kieltoja, mikä estää liittämisen
-    # jos on kielto, lisää vain sopiva ääni ja erota ei-sopivat omaksi tavuksi 
-    # esim: "pa" ja "kk", missä kons.gem. codassa on kielletty -> tavu"pak" ja "k"
-    # oletus on, että lisätään tavun perään, mutta se voidaan lisätä myös eteen
-    # esim: "kk" ja "ap", missä kons.gem. onsetissa on kielletty -> "k" ja "k"
-    # palautetaan 
-    print(rules_list)
-    return None
+def analyze_rules(transferring_sounds, target_syllable, append_to_syllable=True):
+
+    if not transferring_sounds or not target_syllable:
+        return transferring_sounds, target_syllable
+    
+    if append_to_syllable:
+        adjecent_appending_sound = transferring_sounds[-1]
+        adjecent_trailing_sound = target_syllable["sounds"][0]
+    else:
+        adjecent_appending_sound = transferring_sounds[0]
+        adjecent_trailing_sound = target_syllable["sounds"][-1]
+
+    if adjecent_appending_sound["rules"] == []:
+        return transferring_sounds, []
+
+    non_violation = True
+
+    for rule in adjecent_appending_sound["rules"]:
+        if "clusters" in rule:
+            non_violation = analyze_cluster_rules(adjecent_appending_sound, adjecent_trailing_sound, rule)
+
+    if not non_violation:
+        return [], transferring_sounds
+        
+    return transferring_sounds, []
 
 
+def analyze_cluster_rules(appending_sound, trailing_sound, rule):
+    if not appending_sound or not trailing_sound or not rule:
+        return None
+    
+    appending_IPA = appending_sound["IPA"]
+    trailing_IPA = trailing_sound["IPA"]
+
+    if "illegal clusters" in rule["clusters"]:
+        for cluster in rule["clusters"]["illegal clusters"]:
+            if cluster == [appending_IPA, trailing_IPA]:
+                return False
+
+    return True
+
+
+# Tää on jotenkin outo
 def set_rules_for_sounds(rules_list=None, sounds_list=None):
     if rules_list is None or sounds_list is None:
         return None
@@ -42,11 +73,6 @@ def set_rules_for_sounds(rules_list=None, sounds_list=None):
                                 sound["rules"][-1][ruletype] = {ruleset: []}
                             if rule not in sound["rules"][-1][ruletype][ruleset]:
                                 sound["rules"][-1][ruletype][ruleset].append(rule)
-
-    # for sound_type_list in sounds_list.values():
-    #     for sound in sound_type_list:
-    #         if sound["rules"]:
-    #             print(sound)
 
     return sounds_list
 
