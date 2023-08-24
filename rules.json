@@ -1,24 +1,43 @@
 {
-    "clusters": {
-      "illegal clusters": [
-        ["k","s"],
-        ["s","k"],
-        ["e","i"],
-        ["i","e"]
-      ]
-    },
-    "positions": {
-      "illegal codas": [
-        "k"
-      ],
-      "illegal onset" : [
-        
-      ],
-      "illegal word end" : [
-        
-      ]
-    },
-    "syllable": {
+  "clusters": {
+    "illegal clusters": [
+      ["k","s"],
+      ["s","k"],
+      ["e","i"],
+      ["i","e"]
+    ]
+  },
+  "positions": {
+    "illegal codas": [
+      "k"
+    ],
+    "illegal onset" : [
+      
+    ],
+    "illegal word end" : [
+      
+    ]
+  },
+  "syllable": {
 
+  },
+  "vowels": {
+    "roundedness changes": {
+      "rounding": {
+        "after types": [
+          "voiced"
+          ]
+        },
+      "unrounding": {
+        "after types": [
+          "voiced"
+          ]
+        }
+      },
+    "dropping": {
+      "rules": {
+
+      }
     }
   }
+}

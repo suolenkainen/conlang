@@ -6,8 +6,9 @@
         "vowels"
       ],
       "types": [
+        "close",
         "front",
-        "high"
+        "unrounded"
       ],
       "rules": []
     },
@@ -17,10 +18,9 @@
         "vowels"
       ],
       "types": [
+        "close",
         "front",
-        "raised",
-        "unrounded",
-        "high"
+        "rounded"
       ],
       "rules": []
     },
@@ -30,9 +30,9 @@
         "vowels"
       ],
       "types": [
-        "front",
-        "raised",
-        "high"
+        "close",
+        "central",
+        "unrounded"
       ],
       "rules": []
     },
@@ -42,10 +42,9 @@
         "vowels"
       ],
       "types": [
-        "front",
-        "raised",
-        "rounded",
-        "high"
+        "close",
+        "central",
+        "rounded"
       ],
       "rules": []
     },
@@ -55,7 +54,9 @@
         "vowels"
       ],
       "types": [
-        "high"
+        "closed",
+        "back",
+        "unrounded"
       ],
       "rules": []
     },
@@ -65,8 +66,9 @@
         "vowels"
       ],
       "types": [
-        "rounded",
-        "high"
+        "close",
+        "back",
+        "rounded"
       ],
       "rules": []
     },
@@ -76,9 +78,9 @@
         "vowels"
       ],
       "types": [
-        "front",
-        "raised",
-        "high"
+        "near-close",
+        "near-front",
+        "unrounded"
       ],
       "rules": []
     },
@@ -88,10 +90,9 @@
         "vowels"
       ],
       "types": [
-        "front",
-        "raised",
-        "rounded",
-        "high"
+        "near-close",
+        "near-front",
+        "rounded"
       ],
       "rules": []
     },
@@ -101,8 +102,9 @@
         "vowels"
       ],
       "types": [
-        "rounded",
-        "high"
+        "near-close",
+        "near-back",
+        "rounded"
       ],
       "rules": []
     },
@@ -112,9 +114,9 @@
         "vowels"
       ],
       "types": [
+        "close-mid",
         "front",
-        "raised",
-        "high"
+        "unrounded"
       ],
       "rules": []
     },
@@ -124,10 +126,9 @@
         "vowels"
       ],
       "types": [
+        "close-mid",
         "front",
-        "raised",
-        "rounded",
-        "high"
+        "rounded"
       ],
       "rules": []
     },
@@ -137,7 +138,9 @@
         "vowels"
       ],
       "types": [
-        "high"
+        "close-mid",
+        "central",
+        "unrounded"
       ],
       "rules": []
     },
@@ -147,8 +150,9 @@
         "vowels"
       ],
       "types": [
-        "rounded",
-        "high"
+        "close-mid",
+        "central",
+        "rounded"
       ],
       "rules": []
     },
@@ -158,7 +162,9 @@
         "vowels"
       ],
       "types": [
-        "high"
+        "close-mid",
+        "back",
+        "unrounded"
       ],
       "rules": []
     },
@@ -168,8 +174,9 @@
         "vowels"
       ],
       "types": [
-        "rounded",
-        "high"
+        "close-mid",
+        "back",
+        "rounded"
       ],
       "rules": []
     },
@@ -179,9 +186,9 @@
         "vowels"
       ],
       "types": [
+        "mid",
         "front",
-        "raised",
-        "high"
+        "unrounded"
       ],
       "rules": []
     },
@@ -191,10 +198,9 @@
         "vowels"
       ],
       "types": [
+        "mid",
         "front",
-        "raised",
-        "rounded",
-        "high"
+        "rounded"
       ],
       "rules": []
     },
@@ -204,7 +210,9 @@
         "vowels"
       ],
       "types": [
-        "high"
+        "mid",
+        "central",
+        "unrounded"
       ],
       "rules": []
     },
@@ -214,7 +222,9 @@
         "vowels"
       ],
       "types": [
-        "high"
+        "mid",
+        "back",
+        "unrounded"
       ],
       "rules": []
     },
@@ -224,8 +234,9 @@
         "vowels"
       ],
       "types": [
-        "rounded",
-        "high"
+        "mid",
+        "back",
+        "rounded"
       ],
       "rules": []
     },
@@ -235,9 +246,9 @@
         "vowels"
       ],
       "types": [
+        "open-mid",
         "front",
-        "raised",
-        "low"
+        "unrounded"
       ],
       "rules": []
     },
@@ -247,10 +258,9 @@
         "vowels"
       ],
       "types": [
+        "mid",
         "front",
-        "raised",
-        "rounded",
-        "low"
+        "rounded"
       ],
       "rules": []
     },
@@ -260,8 +270,9 @@
         "vowels"
       ],
       "types": [
-        "retracted",
-        "low"
+        "open-mid",
+        "central",
+        "unrounded"
       ],
       "rules": []
     },
@@ -271,9 +282,9 @@
         "vowels"
       ],
       "types": [
-        "retracted",
-        "rounded",
-        "low"
+        "open-mid",
+        "central",
+        "rounded"
       ],
       "rules": []
     },
@@ -283,7 +294,9 @@
         "vowels"
       ],
       "types": [
-        "retracted",
+        "open-mid",
+        "back",
+        "unrounded",
         "low"
       ],
       "rules": []
@@ -294,9 +307,9 @@
         "vowels"
       ],
       "types": [
-        "retracted",
-        "rounded",
-        "low"
+        "open-mid",
+        "back",
+        "rounded"
       ],
       "rules": []
     },
@@ -306,9 +319,9 @@
         "vowels"
       ],
       "types": [
+        "near-open",
         "front",
-        "raised",
-        "low"
+        "unrounded"
       ],
       "rules": []
     },
@@ -318,9 +331,9 @@
         "vowels"
       ],
       "types": [
+        "open",
         "front",
-        "raised",
-        "low"
+        "unrounded"
       ],
       "rules": []
     },
@@ -330,10 +343,9 @@
         "vowels"
       ],
       "types": [
+        "open",
         "front",
-        "raised",
-        "rounded",
-        "low"
+        "rounded"
       ],
       "rules": []
     },
@@ -343,8 +355,8 @@
         "vowels"
       ],
       "types": [
-        "retracted",
-        "low"
+        "near-open",
+        "central"
       ],
       "rules": []
     },
@@ -354,8 +366,8 @@
         "vowels"
       ],
       "types": [
-        "retracted",
-        "low"
+        "open central",
+        "unrounded"
       ],
       "rules": []
     },
@@ -365,8 +377,8 @@
         "vowels"
       ],
       "types": [
-        "retracted",
-        "low"
+        "open back",
+        "unrounded"
       ],
       "rules": []
     },
@@ -376,9 +388,9 @@
         "vowels"
       ],
       "types": [
-        "retracted",
-        "rounded",
-        "low"
+        "open",
+        "back",
+        "rounded"
       ],
       "rules": []
     }

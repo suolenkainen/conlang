@@ -93,11 +93,11 @@ class Set_Rules_for_Sounds(unittest.TestCase):
         mock_sounds_list = {"vowels": [{'IPA': 'a', "classes": ["vowels"], 'types': ['front','raised','low'], 'rules': []}]}
  
         with patch('rules.rules_list', mock_rules_list) and patch('rules.sounds_list', mock_sounds_list):
-                result = rules.set_rules_for_sounds(mock_rules_list, mock_sounds_list)
+            result = rules.set_rules_for_sounds(mock_rules_list, mock_sounds_list)
 
-                self.assertEqual(result, {"vowels": [{'IPA': 'a', "classes": ["vowels"], 
-                                                     'types': ['front','raised','low'], 
-                                                     'rules': [{'clusters': {'illegal vowel clusters': ["a"]}}]}]
+            self.assertEqual(result, {"vowels": [{'IPA': 'a', "classes": ["vowels"], 
+                                                    'types': ['front','raised','low'], 
+                                                    'rules': [{'clusters': {'illegal vowel clusters': ["a"]}}]}]
                                                      })
 
 

@@ -77,4 +77,4 @@ def set_rules_for_sounds(rules_list=None, sounds_list=None):
     return sounds_list
 
 if __name__ == "__main__":
-    set_rules_for_sounds(rules_list, sounds_list)
+    pass
