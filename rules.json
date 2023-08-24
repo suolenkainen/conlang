@@ -26,7 +26,15 @@
       "rounding": {
         "after types": [
           "voiced"
+          ],
+        "between types": {
+          "preceeding": [
+            "voiced"
+          ],
+          "trailing": [
+            "voiced"
           ]
+        }
         },
       "unrounding": {
         "after types": [

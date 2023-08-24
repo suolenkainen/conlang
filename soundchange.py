@@ -17,16 +17,23 @@ roundness_rules = rules_list["vowels"]["roundedness changes"]
 dropping_rules = rules_list["vowels"]["dropping"]
 
 
+
 def vowel_roundness(word, rules=roundness_rules, unround=False):
 
-    change_type_1 = "unrounded"
-    change_type_2 = "rounded"
-    if unround:
-        change_type_1 = "rounded"
-        change_type_2 = "unrounded"
-
+    change_type_1 = "unrounded" if not unround else "rounded"
+    change_type_2 = "rounded" if not unround else "unrounded"
+    rounding_rule = "rounding" if not unround else "unrounding"
+    
     for i, syllable in enumerate(word["syllables"]):
         for j, sound in enumerate(syllable["sounds"]):
+            indexes = (i , j)
+            if "after types" in rules[rounding_rule] and after_type_check(rules[rounding_rule], indexes, word):
+                pass 
+            elif "between types" in rules[rounding_rule] and between_types_check(rules[rounding_rule], indexes, word):
+                pass
+            else:
+                continue
+            
             if change_type_1 in sound["types"]:
                 new_sound_types = sound["types"].copy()
                 new_sound_types.remove(change_type_1)
@@ -35,20 +42,58 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
                     if new_sound["types"] == new_sound_types:
                         syllable["sounds"][j] = new_sound
                         break
+
         word["syllables"][i]["syllable"] = "".join(IPA["IPA"] for IPA in syllable["sounds"])
 
     return word
 
 
+
+def after_type_check(rules, indexes, word):
+    i, j = indexes
+    if i == 0 and j == 0:
+        return False
+
+    after_types = rules["after types"]
+    t_j = j - 1
+    t_i = i - 1 if t_j < 0 else i
+    matching = set(after_types) & set(word["syllables"][t_i]["sounds"][t_j]["types"])
+    if len(matching) == 0:
+        return False
+    
+    return True
+
+
+def between_types_check(rules, indexes, word):
+    i, j = indexes
+    syllable_count = len(word["syllables"])
+    sound_count = len(word["syllables"][i]["sounds"])
+
+    if i == 0 and j == 0:
+         return False
+    if i >= syllable_count-1 and j >= sound_count-1:
+        return False
+
+    after_types = rules["between types"]
+    p_j = j - 1
+    p_i = i - 1 if p_j < 0 else i
+    t_j = j + 1
+    t_i = i
+
+    if j >= sound_count - 1:
+        t_j = 0
+        t_i += 1
+    matching_p = set(after_types["preceeding"]) & set(word["syllables"][p_i]["sounds"][p_j]["types"])
+    matching_t = set(after_types["trailing"]) & set(word["syllables"][t_i]["sounds"][t_j]["types"])
+    if len(matching_p) == 0 or len(matching_t) == 0:
+        return False
+    
+    return True
+
 def vowel_drop(word, rules=dropping_rules):
     dropping_rules
     pass
 
-
-# Lisää tämä syllables.py tiedostoon
-def rewrite_syllable(syllable):
-    syllable["syllable"] = "".join(IPA["IPA"] for IPA in syllable["sounds"])
-    return syllable
 
 if __name__ == "__main__":
     pass
