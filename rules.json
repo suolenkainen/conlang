@@ -46,6 +46,20 @@
       "rules": {
 
       }
+    },
+    "moving": {
+      "rising": {
+
+      },
+      "lowering": {
+
+      },
+      "fronting": {
+
+      },
+      "backing": {
+        
+      }
     }
   }
 }

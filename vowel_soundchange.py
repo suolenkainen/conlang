@@ -15,6 +15,7 @@ with open(file_path, 'r') as file:
 
 roundness_rules = rules_list["vowels"]["roundedness changes"]
 dropping_rules = rules_list["vowels"]["dropping"]
+moving_rules = rules_list["vowels"]["moving"]
 
 
 
@@ -71,7 +72,7 @@ def between_types_check(rules, indexes, word):
 
     if i == 0 and j == 0:
          return False
-    if i >= syllable_count-1 and j >= sound_count-1:
+    if i >= syllable_count-1 and j >= sound_count-1: 
         return False
 
     after_types = rules["between types"]
@@ -93,6 +94,14 @@ def between_types_check(rules, indexes, word):
 def vowel_drop(word, rules=dropping_rules):
     dropping_rules
     pass
+
+
+def move_front_back(word, rules=moving_rules):
+    moving_rules
+
+
+def move_high_low(word, rules=moving_rules):
+    moving_rules
 
 
 if __name__ == "__main__":
