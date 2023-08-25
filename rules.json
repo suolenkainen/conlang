@@ -24,6 +24,12 @@
   "vowels": {
     "roundedness changes": {
       "rounding": {
+        "types": [
+
+        ],
+        "IPA": [
+
+        ],
         "after types": [
           "voiced"
           ],
@@ -42,24 +48,36 @@
           ]
         }
       },
-    "dropping": {
-      "rules": {
+      "dropping": {
+        "IPA": [
+
+        ],
+        "type": [
+
+        ],
+        "after types": []
+      },
+      "moving": {
+        "rising": {
+  
+        },
+        "lowering": {
+  
+        },
+        "fronting": {
+  
+        },
+        "backing": {
+          
+        }
+      },
+      "replacement": {
+        "rules": {
+  
+        }
+      },
+      "degemination": {
 
       }
-    },
-    "moving": {
-      "rising": {
-
-      },
-      "lowering": {
-
-      },
-      "fronting": {
-
-      },
-      "backing": {
-        
-      }
-    }
   }
 }

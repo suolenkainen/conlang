@@ -16,6 +16,8 @@ with open(file_path, 'r') as file:
 roundness_rules = rules_list["vowels"]["roundedness changes"]
 dropping_rules = rules_list["vowels"]["dropping"]
 moving_rules = rules_list["vowels"]["moving"]
+replacement_rules = rules_list["vowels"]["replacement"]
+degemination_rules = rules_list["vowels"]["degemination"]
 
 
 
@@ -27,10 +29,12 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
     
     for i, syllable in enumerate(word["syllables"]):
         for j, sound in enumerate(syllable["sounds"]):
-            indexes = (i , j)
-            if "after types" in rules[rounding_rule] and after_type_check(rules[rounding_rule], indexes, word):
+            indexes = (i, j)
+            if "IPA" in rules[rounding_rule] and IPA_validity_check(rules[rounding_rule], sound["IPA"]):
                 pass 
-            elif "between types" in rules[rounding_rule] and between_types_check(rules[rounding_rule], indexes, word):
+            elif "after types" in rules[rounding_rule] and after_type_validity_check(rules[rounding_rule], indexes, word):
+                pass 
+            elif "between types" in rules[rounding_rule] and between_types_validity_check(rules[rounding_rule], indexes, word):
                 pass
             else:
                 continue
@@ -50,7 +54,14 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
 
 
 
-def after_type_check(rules, indexes, word):
+def IPA_validity_check(rules, sound_IPA):
+    IPA_list = rules["IPA"]
+    if sound_IPA in IPA_list:
+        return True
+    return False
+
+
+def after_type_validity_check(rules, indexes, word):
     i, j = indexes
     if i == 0 and j == 0:
         return False
@@ -65,7 +76,7 @@ def after_type_check(rules, indexes, word):
     return True
 
 
-def between_types_check(rules, indexes, word):
+def between_types_validity_check(rules, indexes, word):
     i, j = indexes
     syllable_count = len(word["syllables"])
     sound_count = len(word["syllables"][i]["sounds"])
@@ -91,6 +102,7 @@ def between_types_check(rules, indexes, word):
     
     return True
 
+
 def vowel_drop(word, rules=dropping_rules):
     dropping_rules
     pass
@@ -102,6 +114,14 @@ def move_front_back(word, rules=moving_rules):
 
 def move_high_low(word, rules=moving_rules):
     moving_rules
+
+
+def vowel_replacement(word, rules=replacement_rules):
+    replacement_rules
+
+
+def vowel_degemination(word, rules=degemination_rules):
+    degemination_rules
 
 
 if __name__ == "__main__":
