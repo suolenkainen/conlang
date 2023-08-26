@@ -19,7 +19,27 @@ moving_rules = rules_list["vowels"]["moving"]
 replacement_rules = rules_list["vowels"]["replacement"]
 degemination_rules = rules_list["vowels"]["degemination"]
 
+# Utility functions based on required check
+class Utility_Checkers:
+    
+    @staticmethod
+    def IPA(sound_IPA, IPA_list):
+        if sound_IPA in IPA_list:
+            return True
+        return False
+    
+    @staticmethod
+    def types(types, type_rules):
+        # tarkistetaan niin, että onko säännön lista
+        for rule in type_rules:
+            matching = set(rule) & set(types)
+            if sorted(list(matching)) == sorted(rule):
+                return True
+        return False
 
+    @staticmethod
+    def classes(classes, rules):
+        print(classes, rules)
 
 def vowel_roundness(word, rules=roundness_rules, unround=False):
 
@@ -30,11 +50,11 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
     for i, syllable in enumerate(word["syllables"]):
         for j, sound in enumerate(syllable["sounds"]):
             indexes = (i, j)
-            if "IPA" in rules[rounding_rule] and IPA_validity_check(rules[rounding_rule], sound["IPA"]):
+            if "IPA match" in rules[rounding_rule] and IPA_validity_check(rules[rounding_rule], sound["IPA"]):
                 pass 
-            elif "after types" in rules[rounding_rule] and after_type_class_validity_check(rules[rounding_rule], indexes, word):
+            elif "after sound" in rules[rounding_rule] and after_type_class_validity_check(rules[rounding_rule], indexes, word):
                 pass 
-            elif "between types" in rules[rounding_rule] and between_types_validity_check(rules[rounding_rule], indexes, word):
+            elif "between" in rules[rounding_rule] and between_types_validity_check(rules[rounding_rule], indexes, word):
                 pass
             else:
                 continue
@@ -53,23 +73,19 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
     return word
 
 
-
-def IPA_validity_check(rules, sound_IPA):
-    IPA_list = rules["IPA"]
-    if sound_IPA in IPA_list:
+def IPA_validity_check(rules, sound):
+    categories = rules["IPA match"]
+    if getattr(Utility_Checkers, "IPA")(sound["IPA"], categories["IPA"]):
         return True
-    return False
+    return False   
 
 
 def types_validity_check(rules, indexes, word):
     i, j = indexes
     types_list = rules["types"]
-    for types in types_list:
-        matching = set(types) & set(word["syllables"][i]["sounds"][j]["types"])
-        if len(matching) == 0:
-            return False
-    
-    return True
+    if getattr(Utility_Checkers, "types")(word["syllables"][i]["sounds"][j]["types"], types_list):
+        return True
+    return False 
 
 
 def after_type_class_validity_check(rules, indexes, word):
@@ -77,7 +93,7 @@ def after_type_class_validity_check(rules, indexes, word):
     if i == 0 and j == 0:
         return False
 
-    after_types = rules["after types"]
+    after_types = rules["after sound"]
     t_j = j - 1
     t_i = i - 1 if t_j < 0 else i
     after = word["syllables"][t_i]["sounds"][t_j]["types"]
@@ -86,6 +102,7 @@ def after_type_class_validity_check(rules, indexes, word):
         after in after_types
         for after in after_types
     )
+    
 
     return matching_combination_found  
 
@@ -99,7 +116,7 @@ def between_types_validity_check(rules, indexes, word):
     if i >= syllable_count-1 and j >= sound_count-1: 
         return False
 
-    after_types = rules["between types"]
+    after_categories = rules["between"]
     p_j = j - 1
     p_i = i - 1 if p_j < 0 else i
     t_j = j + 1
@@ -109,16 +126,16 @@ def between_types_validity_check(rules, indexes, word):
         t_j = 0
         t_i += 1
 
-    preceeding_types = word["syllables"][p_i]["sounds"][p_j]["types"]
-    trailing_types = word["syllables"][t_i]["sounds"][t_j]["types"]
+    preceeding_categories = word["syllables"][p_i]["sounds"][p_j]
+    trailing_categories = word["syllables"][t_i]["sounds"][t_j]
 
-    matching_combination_found = any(
-        preceding in preceeding_types and trailing in trailing_types
-        for preceding in after_types["preceeding"]
-        for trailing in after_types["trailing"]
-    )
+    for pre_category in after_categories["preceeding"]:
+        if getattr(Utility_Checkers, pre_category)(preceeding_categories[pre_category], after_categories["preceeding"][pre_category]):
+            for trail_category in after_categories["trailing"]:
+                if getattr(Utility_Checkers, trail_category)(trailing_categories[trail_category], after_categories["trailing"][trail_category]):
+                    return True            
+    return False   
 
-    return matching_combination_found    
 
 
 def vowel_drop(word, rules=dropping_rules):
