@@ -62,11 +62,11 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.sunny_word)
 
 
-    @patch('vowel_soundchange.after_type_validity_check')
-    def test_unrounding_with_any_consonant(self, mock_after_type_validity_check):
+    @patch('vowel_soundchange.after_type_class_validity_check')
+    def test_unrounding_with_any_consonant(self, mock_after_type_class_validity_check):
         
         mock_roundness_rules = {"unrounding": {"after types": ["voiced", "voiceless"]}, "rounding": {}}
-        mock_after_type_validity_check.side_effect = [False, True, False, True, True]
+        mock_after_type_class_validity_check.side_effect = [False, True, False, True, True]
 
         with patch('vowel_soundchange.sounds_list', self.sound_list):
             result = vowel_soundchange.vowel_roundness(self.sunni_word, mock_roundness_rules, True) #FTFTT
@@ -74,12 +74,12 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.sɯnni_word)
 
 
-    @patch('vowel_soundchange.after_type_validity_check')
+    @patch('vowel_soundchange.after_type_class_validity_check')
     @patch('vowel_soundchange.between_types_validity_check')
-    def test_rounding_with_non_roundable_vowel_after_consonant(self, mock_after_type_validity_check, mock_between_types_validity_check):
+    def test_rounding_with_non_roundable_vowel_after_consonant(self, mock_after_type_class_validity_check, mock_between_types_validity_check):
         
         mock_roundness_rules = {"rounding": {"after types": ["voiced", "voiceless"]}, "unrounding": {"after types": ["voiced"]}}
-        mock_after_type_validity_check.side_effect = [False, False, False]
+        mock_after_type_class_validity_check.side_effect = [False, False, False]
         mock_between_types_validity_check.side_effect = [False, False, False]
 
         with patch('vowel_soundchange.sounds_list', self.sound_list):
@@ -88,11 +88,11 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.sɐs_word)
 
 
-    @patch('vowel_soundchange.after_type_validity_check')
-    def test_rounding_with_non_roundable_vowel_after_any_vowel(self, mock_after_type_validity_check):
+    @patch('vowel_soundchange.after_type_class_validity_check')
+    def test_rounding_with_non_roundable_vowel_after_any_vowel(self, mock_after_type_class_validity_check):
         
         mock_roundness_rules = {"rounding": {"after types": ["voiced", "rounded", "unrounded", "voiceless"]}, "unrounding": {}}
-        mock_after_type_validity_check.side_effect = [False, True, True, True]
+        mock_after_type_class_validity_check.side_effect = [False, True, True, True]
         
         with patch('vowel_soundchange.sounds_list', self.sound_list):
             result = vowel_soundchange.vowel_roundness(self.nyis_word, mock_roundness_rules)  #FTTT 
@@ -100,12 +100,12 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.nyys_word)
 
 
-    @patch('vowel_soundchange.after_type_validity_check')
+    @patch('vowel_soundchange.after_type_class_validity_check')
     @patch('vowel_soundchange.between_types_validity_check')
-    def test_rounding_with_with_placement_rules(self, mock_after_type_validity_check, mock_between_types_validity_check):
+    def test_rounding_with_with_placement_rules(self, mock_after_type_class_validity_check, mock_between_types_validity_check):
         
         mock_roundness_rules = {"rounding": {"after types": ["nasals"], "between types": {"preceeding": ["frontcon"], "trailing": ["frontcon"]}}, "unrounding": {}}
-        mock_after_type_validity_check.side_effect = [False, True, False, False, False, False, False]
+        mock_after_type_class_validity_check.side_effect = [False, True, False, False, False, False, False]
         mock_between_types_validity_check.side_effect = [False, False, False, False, False, True, False]
         
         with patch('vowel_soundchange.sounds_list', self.sound_list):
@@ -115,13 +115,13 @@ class Vowel_Rounding(unittest.TestCase):
 
 
     @patch('vowel_soundchange.between_types_validity_check')
-    @patch('vowel_soundchange.after_type_validity_check')
+    @patch('vowel_soundchange.after_type_class_validity_check')
     @patch('vowel_soundchange.IPA_validity_check')
-    def test_rounding_with_with_multiple_rules(self, mock_IPA_validity_check, mock_after_type_validity_check, mock_between_types_validity_check):
+    def test_rounding_with_with_multiple_rules(self, mock_IPA_validity_check, mock_after_type_class_validity_check, mock_between_types_validity_check):
 
         mock_roundness_rules = {"rounding": {"after types": ["nasals"], "between types": {"preceeding": ["frontcon"], "trailing": ["frontcon"]}, "IPA": ["e"]}, "unrounding": {}}
         mock_IPA_validity_check.side_effect = [False, False, True, False, False, False, False]
-        mock_after_type_validity_check.side_effect = [False, True, False, False, False, False, False]
+        mock_after_type_class_validity_check.side_effect = [False, True, False, False, False, False, False]
         mock_between_types_validity_check.side_effect = [False, False, False, True, False, False, False]
         
         with patch('vowel_soundchange.sounds_list', self.sound_list):
@@ -144,7 +144,7 @@ class Vowel_Dropping(unittest.TestCase):
 
 
 
-class After_Type_Validity_Check(unittest.TestCase):
+class after_type_class_validity_check(unittest.TestCase):
 
     def setUp(self):
 
@@ -167,7 +167,7 @@ class After_Type_Validity_Check(unittest.TestCase):
         indexes = indexes = (0 , 1)
         word = self.sun_word
 
-        result = vowel_soundchange.after_type_validity_check(rules, indexes, word)
+        result = vowel_soundchange.after_type_class_validity_check(rules, indexes, word)
 
         self.assertEqual(result, True)
 
@@ -175,7 +175,7 @@ class After_Type_Validity_Check(unittest.TestCase):
     def test_check_type_after_rule_word_first_sound(self):
         rules = {"after types": ["voiced", "rounded", "unrounded", "voiceless"]}
         indexes = indexes = (0 , 0)
-        result = vowel_soundchange.after_type_validity_check(rules, indexes, self.sun_word,)
+        result = vowel_soundchange.after_type_class_validity_check(rules, indexes, self.sun_word,)
 
         self.assertEqual(result, False)
 
@@ -184,7 +184,7 @@ class After_Type_Validity_Check(unittest.TestCase):
         rules = {"after types": ["voiced", "rounded", "unrounded", "voiceless"]}
         indexes = indexes = (1 , 0)
 
-        result = vowel_soundchange.after_type_validity_check(rules, indexes, self.sun_word)
+        result = vowel_soundchange.after_type_class_validity_check(rules, indexes, self.sun_word)
 
         self.assertEqual(result, True)
 
@@ -289,6 +289,16 @@ class Between_Types_Validity_Check(unittest.TestCase):
         self.assertEqual(result, False)
 
 
+    def test_check_type_after_rule_both_no_and_yes_match(self):
+        rules = {"between types": {"preceeding": ["trill", "voiceless"], "trailing": ["occlusive", "voiced"]}}
+        indexes = indexes = (0 , 1)
+        word = self.sun_word
+
+        result = vowel_soundchange.between_types_validity_check(rules, indexes, word)
+
+        self.assertEqual(result, True)
+
+
 class IPA_Validity_Check(unittest.TestCase):
     
     def setUp(self):
@@ -318,6 +328,69 @@ class IPA_Validity_Check(unittest.TestCase):
         result = vowel_soundchange.IPA_validity_check(rules, sound_IPA)
 
         self.assertEqual(result, False)
+
+
+    def test_check_matching_from_many(self):
+        rules = {"IPA": ["y", "i", "u"]}
+        sound_IPA = "u"
+
+        result = vowel_soundchange.IPA_validity_check(rules, sound_IPA)
+
+        self.assertEqual(result, True)
+
+
+class Types_Validity_Check(unittest.TestCase):
+    
+
+    def setUp(self):
+        
+        self.s_sound = {"IPA": "s", "classes": ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], "types": ["voiceless", "frontcon", "alveolar"], "rules": []}
+        self.ɯ_sound = {'IPA': 'ɯ', "classes": ["vowels"], 'types': ['close', 'back', 'unrounded'], 'rules': []}
+        self.n_sound = {"IPA": "n", "classes": ["nasals", "occlusives"], "types": ["voiced", "frontcon", "alveloar"], "rules": []}
+
+        self.sɯn_syllable = {'stress': None, 'legal': True, 'syllable': 'sɯn', 'sounds': [self.s_sound, self.ɯ_sound, self.n_sound]}
+
+        self.sɯn_word = {"syllables": [self.sɯn_syllable]}
+
+
+    def test_check_type_rule_single_syllable_word(self):
+        rules = {"types": [['close']]}
+        indexes = indexes = (0 , 1)
+        word = self.sɯn_word
+
+        result = vowel_soundchange.types_validity_check(rules, indexes, word)
+
+        self.assertEqual(result, True)
+
+
+    def test_check_type_rule_single_syllable_word_no_match(self):
+        rules = {"types": [['front']]}
+        indexes = indexes = (0 , 1)
+        word = self.sɯn_word
+
+        result = vowel_soundchange.types_validity_check(rules, indexes, word)
+
+        self.assertEqual(result, False)
+
+
+    def test_check_type_rule_single_syllable_word_two_rules(self):
+        rules = {"types": [['close', 'back']]}
+        indexes = indexes = (0 , 1)
+        word = self.sɯn_word
+
+        result = vowel_soundchange.types_validity_check(rules, indexes, word)
+
+        self.assertEqual(result, False)
+
+
+    def test_check_type_rule_single_syllable_word_two_rules(self):
+        rules = {"types": [['close', 'front'], ['close', 'back']]}
+        indexes = indexes = (0 , 1)
+        word = self.sɯn_word
+
+        result = vowel_soundchange.types_validity_check(rules, indexes, word)
+
+        self.assertEqual(result, True)
 
 
 

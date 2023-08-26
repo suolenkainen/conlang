@@ -32,7 +32,7 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
             indexes = (i, j)
             if "IPA" in rules[rounding_rule] and IPA_validity_check(rules[rounding_rule], sound["IPA"]):
                 pass 
-            elif "after types" in rules[rounding_rule] and after_type_validity_check(rules[rounding_rule], indexes, word):
+            elif "after types" in rules[rounding_rule] and after_type_class_validity_check(rules[rounding_rule], indexes, word):
                 pass 
             elif "between types" in rules[rounding_rule] and between_types_validity_check(rules[rounding_rule], indexes, word):
                 pass
@@ -61,7 +61,18 @@ def IPA_validity_check(rules, sound_IPA):
     return False
 
 
-def after_type_validity_check(rules, indexes, word):
+def types_validity_check(rules, indexes, word):
+    i, j = indexes
+    types_list = rules["types"]
+    for types in types_list:
+        matching = set(types) & set(word["syllables"][i]["sounds"][j]["types"])
+        if len(matching) == 0:
+            return False
+    
+    return True
+
+
+def after_type_class_validity_check(rules, indexes, word):
     i, j = indexes
     if i == 0 and j == 0:
         return False
@@ -69,12 +80,14 @@ def after_type_validity_check(rules, indexes, word):
     after_types = rules["after types"]
     t_j = j - 1
     t_i = i - 1 if t_j < 0 else i
-    matching = set(after_types) & set(word["syllables"][t_i]["sounds"][t_j]["types"])
-    if len(matching) == 0:
-        return False
-    
-    return True
+    after = word["syllables"][t_i]["sounds"][t_j]["types"]
 
+    matching_combination_found = any(
+        after in after_types
+        for after in after_types
+    )
+
+    return matching_combination_found  
 
 def between_types_validity_check(rules, indexes, word):
     i, j = indexes
@@ -95,12 +108,17 @@ def between_types_validity_check(rules, indexes, word):
     if j >= sound_count - 1:
         t_j = 0
         t_i += 1
-    matching_p = set(after_types["preceeding"]) & set(word["syllables"][p_i]["sounds"][p_j]["types"])
-    matching_t = set(after_types["trailing"]) & set(word["syllables"][t_i]["sounds"][t_j]["types"])
-    if len(matching_p) == 0 or len(matching_t) == 0:
-        return False
-    
-    return True
+
+    preceeding_types = word["syllables"][p_i]["sounds"][p_j]["types"]
+    trailing_types = word["syllables"][t_i]["sounds"][t_j]["types"]
+
+    matching_combination_found = any(
+        preceding in preceeding_types and trailing in trailing_types
+        for preceding in after_types["preceeding"]
+        for trailing in after_types["trailing"]
+    )
+
+    return matching_combination_found    
 
 
 def vowel_drop(word, rules=dropping_rules):
