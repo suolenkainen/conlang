@@ -4,7 +4,7 @@
 
 import unittest
 from unittest.mock import patch
-import vowel_rounding
+import vowel_changes
 
 
 
@@ -61,12 +61,12 @@ class Vowel_Rounding(unittest.TestCase):
                                     "between": {}}, 
                                 "unrounding": {}}
         
-        mock_between_sounds_validity_check.side_effect = [False, True, False, True, True]
+        mock_between_sounds_validity_check.side_effect = [False, True, False, False, False]
 
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.sunni_word, mock_roundness_rules)
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.sɯnni_word, mock_roundness_rules)
 
-        self.assertEqual(result, self.sunny_word)
+        self.assertEqual(result, self.sunni_word)
 
 
     @patch('sound_validation.after_sound_validity_check')
@@ -78,8 +78,8 @@ class Vowel_Rounding(unittest.TestCase):
         
         mock_after_sound_validity_check.side_effect = [False, True, False, True, True]
 
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.sunni_word, mock_roundness_rules, True) #FTFTT
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.sunni_word, mock_roundness_rules, True) #FTFTT
 
         self.assertEqual(result, self.sɯnni_word)
 
@@ -95,8 +95,8 @@ class Vowel_Rounding(unittest.TestCase):
         mock_after_sound_validity_check.side_effect = [False, False, False]
         mock_between_sounds_validity_check.side_effect = [False, False, False]
 
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.sɐs_word, mock_roundness_rules, True)
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.sɐs_word, mock_roundness_rules, True)
 
         self.assertEqual(result, self.sɐs_word)
 
@@ -110,8 +110,8 @@ class Vowel_Rounding(unittest.TestCase):
         
         mock_after_sound_validity_check.side_effect = [False, True, True, True]
         
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.nyis_word, mock_roundness_rules)  #FTTT 
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.nyis_word, mock_roundness_rules)  #FTTT 
 
         self.assertEqual(result, self.nyys_word)
 
@@ -135,8 +135,8 @@ class Vowel_Rounding(unittest.TestCase):
         mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
         mock_between_sounds_validity_check.side_effect = [False, False, False, False, False, True, False]
         
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.niissɯs_word, mock_roundness_rules)  #FTTT 
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.niissɯs_word, mock_roundness_rules)  #FTTT 
 
         self.assertEqual(result, self.nyissus_word)
 
@@ -163,8 +163,8 @@ class Vowel_Rounding(unittest.TestCase):
         mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
         mock_between_sounds_validity_check.side_effect = [False, False, False, True, False, False, False]
         
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.niessɯs_word, mock_roundness_rules)
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.niessɯs_word, mock_roundness_rules)
 
         self.assertEqual(result, self.nyøssus_word)
 
@@ -195,8 +195,8 @@ class Vowel_Rounding(unittest.TestCase):
         mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
         mock_between_sounds_validity_check.side_effect = [False, False, False, True, False, False, False]
         
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.niessɯs_word, mock_roundness_rules)
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.niessɯs_word, mock_roundness_rules)
 
         self.assertEqual(result, self.nyøssus_word)
 
@@ -229,10 +229,117 @@ class Vowel_Rounding(unittest.TestCase):
         mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
         mock_between_sounds_validity_check.side_effect = [False, False, False, False, False, False, False]
         
-        with patch('vowel_rounding.sounds_list', self.sound_list):
-            result = vowel_rounding.vowel_roundness(self.niessɯn_word, mock_roundness_rules)
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_roundness(self.niessɯn_word, mock_roundness_rules)
 
         self.assertEqual(result, self.nyøssun_word)
+
+
+class Vowel_Fronting(unittest.TestCase):
+
+    def setUp(self):
+        
+        self.s_sound = {"IPA": "s", "classes": ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], "types": ["voiceless", "frontcon", "alveolar"], "rules": []}
+        self.n_sound = {"IPA": "n", "classes": ["nasals", "occlusives"], "types": ["voiced", "frontcon", "alveloar"], "rules": []}
+        self.u_sound = {'IPA': 'u', "classes": ["vowels"], 'types': ['close', 'back', 'rounded'], 'rules': []}
+        self.ʉ_sound = {'IPA': 'ʉ', "classes": ["vowels"], 'types': ['close', 'central', 'rounded'], 'rules': []}
+        self.y_sound = {'IPA': 'y', "classes": ["vowels"], 'types': ['close', 'front', 'rounded'], 'rules': []}
+        self.ʏ_sound = {'IPA': 'ʏ', "classes": ["vowels"], 'types': ['near-close', 'near-front', 'rounded'], 'rules': []}
+        self.ɐ_sound = {'IPA': 'ɐ', "classes": ["vowels"], 'types': ['near-open', 'central'], 'rules': []}
+        self.ɑ_sound = {'IPA': 'ɑ', "classes": ["vowels"], 'types': ['open', 'back', 'unrounded'], 'rules': []}
+
+        self.sun_syllable = {'stress': None, 'legal': True, 'syllable': 'sun', 'sounds': [self.s_sound, self.u_sound, self.n_sound]}
+        self.sʉn_syllable = {'stress': None, 'legal': True, 'syllable': 'sʉn', 'sounds': [self.s_sound, self.ʉ_sound, self.n_sound]}
+        self.syn_syllable = {'stress': None, 'legal': True, 'syllable': 'syn', 'sounds': [self.s_sound, self.y_sound, self.n_sound]}
+        self.sʏn_syllable = {'stress': None, 'legal': True, 'syllable': 'sʏn', 'sounds': [self.s_sound, self.ʏ_sound, self.n_sound]}
+        self.sɐn_syllable = {'stress': None, 'legal': True, 'syllable': 'sɐn', 'sounds': [self.s_sound, self.ɐ_sound, self.n_sound]}
+        self.sɑn_syllable = {'stress': None, 'legal': True, 'syllable': 'sɑn', 'sounds': [self.s_sound, self.ɑ_sound, self.n_sound]}
+
+        self.sun_word = {"syllables": [self.sun_syllable]}
+        self.sʉn_word = {"syllables": [self.sʉn_syllable]}
+        self.syn_word = {"syllables": [self.syn_syllable]}
+        self.sʏn_word = {"syllables": [self.sʏn_syllable]}
+        self.sɐn_word = {"syllables": [self.sɐn_syllable]}
+        self.sɑn_word = {"syllables": [self.sɑn_syllable]}
+
+        self.sound_list = [self.u_sound, self.s_sound, self.n_sound, self.ʉ_sound, self.y_sound, self.ʏ_sound, self.ɐ_sound, self.ɑ_sound]
+
+    ### Lisää säännöt typelle, IPAlle ja classeille
+    def test_01(self):
+        # Fronting a back vowel to center as weak move
+        
+        # mock_roundness_rules = {"rounding": {
+        #                             "between": {}}, 
+        #                         "unrounding": {}}
+        
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_fronting(self.sun_word, True, False)
+
+        self.assertEqual(result, self.sʉn_word)
+
+
+    def test_02(self):
+        # Fronting a middle vowel to front as weak (non-weak)
+        
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_fronting(self.sun_word, True, True)
+
+        self.assertEqual(result, self.syn_word)
+
+
+    def test_03(self):
+        # Fronting a center vowel to front as strong move (exception)
+        
+        # mock_roundness_rules = {"rounding": {
+        #                             "between": {}}, 
+        #                         "unrounding": {}}
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_fronting(self.sʉn_word, True, True)
+
+        self.assertEqual(result, self.syn_word)
+
+
+    def test_04(self):
+        # Rearing back vowel
+        
+        # mock_roundness_rules = {"rounding": {
+        #                             "between": {}}, 
+        #                         "unrounding": {}}
+        
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_fronting(self.sun_word, False, False)
+
+        self.assertEqual(result, self.sun_word)
+
+
+    def test_05(self):
+        # Fronting a near-front vowel to front as weak (exception)
+        
+        # mock_roundness_rules = {"rounding": {
+        #                             "between": {}}, 
+        #                         "unrounding": {}}
+        
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_fronting(self.sʏn_word, True, True)
+
+        self.assertEqual(result, self.syn_word)
+
+
+    def test_06(self):
+        # Rearing ɐ-sound
+        
+        # mock_roundness_rules = {"rounding": {
+        #                             "between": {}}, 
+        #                         "unrounding": {}}
+        
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_fronting(self.sɐn_word, False, True)
+
+        self.assertEqual(result, self.sɑn_word)
 
 
 
