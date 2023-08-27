@@ -19,32 +19,31 @@ moving_rules = rules_list["vowels"]["moving"]
 replacement_rules = rules_list["vowels"]["replacement"]
 degemination_rules = rules_list["vowels"]["degemination"]
 
-# Utility functions based on required check
-class Utility_Checkers:
-    
-    @staticmethod
-    def IPA(sound_IPA, IPA_list):
-        if sound_IPA in IPA_list:
+
+def IPA(sound_IPA, IPA_list):
+    if sound_IPA in IPA_list:
+        return True
+    return False
+
+def types(types, type_rules):
+    for rule in type_rules:
+        matching = set(rule) & set(types)
+        if sorted(list(matching)) == sorted(rule):
             return True
-        return False
-    
-    @staticmethod
-    def types(types, type_rules):
-        for rule in type_rules:
-            matching = set(rule) & set(types)
-            if sorted(list(matching)) == sorted(rule):
-                return True
-        return False
+    return False
 
-    @staticmethod
-    def classes(classes, class_rules):
-        print(classes, class_rules)
-        for rule in class_rules:
-            matching = set(rule) & set(classes)
-            if sorted(list(matching)) == sorted(rule):
-                return True
-        return False
+def classes(classes, class_rules):
+    for rule in class_rules:
+        matching = set(rule) & set(classes)
+        if sorted(list(matching)) == sorted(rule):
+            return True
+    return False
 
+checker_map = {
+    "IPA": IPA,
+    "types": types,
+    "classes": classes
+}
 
 def vowel_roundness(word, rules=roundness_rules, unround=False):
 
@@ -83,7 +82,7 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
 def sound_itself_validity_check(rules, sound):
     categories = rules["sound itself"]
     for category in categories:
-        if getattr(Utility_Checkers, category)(sound[category], categories[category]):
+        if checker_map.get(category)(sound[category], categories[category]):
             return True
     return False   
 
@@ -98,8 +97,8 @@ def after_sound_validity_check(rules, indexes, word):
     sound_after_rules = word["syllables"][t_i]["sounds"][t_j]
 
     for after_types in rules["after sound"]:
-        if getattr(Utility_Checkers, after_types)(sound_after_rules[after_types], rules["after sound"][after_types]):
-            return True            
+        if checker_map.get(after_types)(sound_after_rules[after_types], rules["after sound"][after_types]):
+            return True
     return False
 
 
@@ -118,8 +117,8 @@ def before_sound_validity_check(rules, indexes, word):
     sound_categories = word["syllables"][b_i]["sounds"][b_j]
 
     for category in rule_categories:
-        if getattr(Utility_Checkers, category)(sound_categories[category], rule_categories[category]):
-            return True            
+        if checker_map.get(category)(sound_categories[category], rule_categories[category]):
+            return True
     return False   
 
 
@@ -141,10 +140,10 @@ def between_sounds_validity_check(rules, indexes, word):
     trailing_categories = word["syllables"][t_i]["sounds"][t_j]
 
     for pre_category in after_categories["preceeding"]:
-        if getattr(Utility_Checkers, pre_category)(preceeding_categories[pre_category], after_categories["preceeding"][pre_category]):
+        if checker_map.get(pre_category)(preceeding_categories[pre_category], after_categories["preceeding"][pre_category]):
             for trail_category in after_categories["trailing"]:
-                if getattr(Utility_Checkers, trail_category)(trailing_categories[trail_category], after_categories["trailing"][trail_category]):
-                    return True            
+                if checker_map.get(trail_category)(trailing_categories[trail_category], after_categories["trailing"][trail_category]):
+                    return True
     return False   
 
 

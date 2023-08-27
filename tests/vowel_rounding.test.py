@@ -58,10 +58,7 @@ class Vowel_Rounding(unittest.TestCase):
     def test_01_rounding_between_any_consonant(self, mock_between_sounds_validity_check):
         
         mock_roundness_rules = {"rounding": {
-                                    "between": {
-                                        "IPA": [],
-                                        "types": [["voiced"], ["voiceless"]],
-                                        "classes": []}}, 
+                                    "between": {}}, 
                                 "unrounding": {}}
         
         mock_between_sounds_validity_check.side_effect = [False, True, False, True, True]
@@ -76,10 +73,7 @@ class Vowel_Rounding(unittest.TestCase):
     def test_02_unrounding_with_any_consonant(self, mock_after_sound_validity_check):
         
         mock_roundness_rules = {"unrounding": {
-                                    "after sound": {
-                                        "IPA": [],
-                                        "types": [["voiced"], ["voiceless"]], 
-                                        "classes": []}}, 
+                                    "after sound": {}}, 
                                 "rounding": {}}
         
         mock_after_sound_validity_check.side_effect = [False, True, False, True, True]
@@ -94,16 +88,9 @@ class Vowel_Rounding(unittest.TestCase):
     @patch('vowel_rounding.between_sounds_validity_check')
     def test_03_rounding_with_non_roundable_vowel_after_consonant(self, mock_after_sound_validity_check, mock_between_sounds_validity_check):
         
-        mock_roundness_rules = {"rounding": {
-                                    "after sound": {
-                                        "IPA": [],
-                                        "types": [["voiced"], ["voiceless"]], 
-                                        "classes": []}}, 
+        mock_roundness_rules = {"rounding": {}, 
                                 "unrounding": {
-                                    "after sound": {
-                                        "IPA": [],
-                                        "types": [["voiced"]], 
-                                        "classes": []}}}
+                                    "after sound": {}}}
         
         mock_after_sound_validity_check.side_effect = [False, False, False]
         mock_between_sounds_validity_check.side_effect = [False, False, False]
@@ -118,10 +105,7 @@ class Vowel_Rounding(unittest.TestCase):
     def test_04_rounding_with_non_roundable_vowel_after_any_vowel(self, mock_after_sound_validity_check):
         
         mock_roundness_rules = {"rounding": {
-                                    "after sound": {
-                                        "IPA": [],
-                                        "types": [["voiced"], ["rounded"], ["unrounded"], ["voiceless"]], 
-                                        "classes": []}}, 
+                                    "after sound": {}}, 
                                 "unrounding": {}}
         
         mock_after_sound_validity_check.side_effect = [False, True, True, True]
@@ -138,19 +122,14 @@ class Vowel_Rounding(unittest.TestCase):
         
         mock_roundness_rules = {"rounding": {
                                     "after sound": {
-                                        "IPA": [],
-                                        "types": [["nasals"]], 
-                                        "classes": []}, 
+                                        "types": [["nasals"]]}, 
                                     "between": {
                                         "preceeding": {
-                                            "IPA": [], 
                                             "types": [["front"]], 
                                             "classes": []
                                             }, 
                                         "trailing": {
-                                            "IPA": [],
-                                            "types": [["frontcon"]], 
-                                            "classes": []}}}, 
+                                            "types": [["frontcon"]]}}}, 
                                 "unrounding": {}}
         
         mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
@@ -168,23 +147,16 @@ class Vowel_Rounding(unittest.TestCase):
     def test_06_rounding_with_with_multiple_rules(self, mock_sound_itself_validity_check, mock_after_sound_validity_check, mock_between_sounds_validity_check):
 
         mock_roundness_rules = {"rounding": {
-                                    "after sound": {
-                                        "IPA": [],
-                                        "types": [["nasals"]], 
-                                        "classes": []}, 
+                                    "after sound": {}, 
                                     "between": {
                                         "preceeding": {
                                             "IPA": [],
-                                            "types": [["frontcon"]], 
-                                            "classes": []}, 
+                                            "types": [["frontcon"]]}, 
                                         "trailing": {
-                                            "IPA": [],
                                             "types": [["frontcon"]], 
                                             "classes": []}}, 
                                     "sound itself": {
-                                        "IPA": ["e"],
-                                        "types": [[]],
-                                        "classes": []}}, 
+                                        "IPA": ["e"]}}, 
                                 "unrounding": {}}
         
         mock_sound_itself_validity_check.side_effect = [False, False, True, False, False, False, False]
@@ -197,7 +169,6 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.nyøssus_word)
 
 
-
     @patch('vowel_rounding.between_sounds_validity_check')
     @patch('vowel_rounding.after_sound_validity_check')
     @patch('vowel_rounding.sound_itself_validity_check')
@@ -207,20 +178,15 @@ class Vowel_Rounding(unittest.TestCase):
         mock_roundness_rules = {"rounding": {
                                     "after sound": {
                                         "IPA": [],
-                                        "types": [["nasals"]], 
-                                        "classes": []}, 
+                                        "types": [["nasals"]]}, 
                                     "between": {
                                         "preceeding": {
-                                            "IPA": [],
                                             "types": [["frontcon"]], 
                                             "classes": []}, 
                                         "trailing": {
-                                            "IPA": [],
-                                            "types": [["frontcon"]], 
-                                            "classes": []}}, 
+                                            "types": [["frontcon"]]}}, 
                                     "sound itself": {
                                         "IPA": ["e"],
-                                        "types": [[]],
                                         "classes": []}}, 
                                 "unrounding": {}}
         
@@ -244,24 +210,17 @@ class Vowel_Rounding(unittest.TestCase):
         mock_roundness_rules = {"rounding": {
                                     "after sound": {
                                         "IPA": [],
-                                        "types": [["nasals"]], 
-                                        "classes": []}, 
+                                        "types": [["nasals"]]}, 
                                     "between": {
                                         "preceeding": {
-                                            "IPA": [],
                                             "types": [["frontcon"]], 
                                             "classes": []}, 
                                         "trailing": {
-                                            "IPA": [],
                                             "types": [["frontcon"]], 
                                             "classes": []}}, 
                                     "sound itself": {
-                                        "IPA": [],
-                                        "types": [['close-mid', 'front']],
-                                        "classes": []},
+                                        "types": [['close-mid', 'front']]},
                                     "before": {
-                                        "IPA": [],
-                                        "types": [[]],
                                         "classes": [["nasals"]]}}, 
                                 "unrounding": {}}
         
@@ -297,9 +256,7 @@ class after_sound_validity_check(unittest.TestCase):
 
     def test_01_check_type_after_rule_single_syllable_word(self):
         rules = {"after sound": {
-                    "IPA": [],
-                    "types": [["voiced"], ["rounded"], ["unrounded"], ["voiceless"]],
-                    "classes": []}}
+                    "types": [["voiced"], ["rounded"], ["unrounded"], ["voiceless"]]}}
         
         indexes = indexes = (0 , 1)
         word = self.sun_word
@@ -545,7 +502,7 @@ class between_sounds_Validity_Check(unittest.TestCase):
                         "types": [["occlusive"], ["voiced"]], 
                         "classes": []}}}
         
-        indexes = indexes = (0 , 1)
+        indexes = indexes = (0 , 1) 
         word = self.sun_word
 
         result = vowel_rounding.between_sounds_validity_check(rules, indexes, word)
@@ -553,7 +510,7 @@ class between_sounds_Validity_Check(unittest.TestCase):
         self.assertEqual(result, True)
 
 
-class sound_itself_validity_check(unittest.TestCase):
+class Sound_Itself_Validity_Check(unittest.TestCase):
     
     def setUp(self):
         
@@ -663,17 +620,13 @@ class Before_Sounds_Validity_Check(unittest.TestCase):
         self.s_sound = {"IPA": "s", "classes": ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], "types": ["voiceless", "frontcon", "alveolar"], "rules": []}
         self.u_sound = {'IPA': 'u', "classes": ["vowels"], 'types': ['close', 'back', 'rounded'], 'rules': []}
         self.n_sound = {"IPA": "n", "classes": ["nasals", "occlusives"], "types": ["voiced", "frontcon", "alveloar"], "rules": []}
-        self.i_sound = {'IPA': 'i', "classes": ["vowels"], 'types': ['close', 'front', 'unrounded'], 'rules': []}
         self.y_sound = {'IPA': 'y', "classes": ["vowels"], 'types': ['close', 'front', 'rounded'], 'rules': []}
 
         self.sun_syllable = {'stress': None, 'legal': True, 'syllable': 'sun', 'sounds': [self.s_sound, self.u_sound, self.n_sound]}
         self.ny_syllable = {'stress': None, 'legal': True, 'syllable': 'ny', 'sounds': [self.n_sound, self.y_sound]}
-        self.is_syllable = {'stress': None, 'legal': True, 'syllable': 'is', 'sounds': [self.i_sound, self.s_sound]}
 
         self.sun_word = {"syllables": [self.sun_syllable]}
         self.nysun_word = {"syllables": [self.ny_syllable, self.sun_syllable]}
-        self.sunis_word = {"syllables": [self.sun_syllable, self.is_syllable]}
-        self.sunsun_word = {"syllables": [self.sun_syllable, self.sun_syllable]}
         self.ny_word = {"syllables": [self.ny_syllable]}
 
 
