@@ -21,6 +21,18 @@ fronting_variables = [
     'central', 
     'back']
 
+
+closing_variables = [
+    'close', 
+    'near-close', 
+    'close-mid',
+    'mid',
+    'open-mid',
+    'near-open',
+    'open']
+
+
+
 # Map for exceptions of vowel shifting
 fronting_exceptions = {
                         'ɪ': [
@@ -35,6 +47,25 @@ fronting_exceptions = {
                         'ɐ': [
                             {'IPA': 'æ', "classes": ["vowels"], 'types': ['near-open', 'front', 'unrounded'], 'rules': []},
                             {'IPA': 'ɑ', "classes": ["vowels"], 'types': ['open', 'back', 'unrounded'], 'rules': []}]
+                      }
+
+
+closing_exceptions = {
+                        'ɪ': [
+                            {'IPA': 'i', "classes": ["vowels"], 'types': ['close', 'front', 'unrounded'], 'rules': []}, 
+                            {'IPA': 'e', "classes": ["vowels"], 'types': ['close-mid', 'front', 'unrounded'], 'rules': []}], 
+                        'ʏ': [
+                            {'IPA': 'y', "classes": ["vowels"], 'types': ['close', 'front', 'rounded'], 'rules': []},
+                            {'IPA': 'ø', "classes": ["vowels"], 'types': ['close-mid', 'front', 'rounded'], 'rules': []}], 
+                        'ʊ': [
+                            {'IPA': 'u', "classes": ["vowels"], 'types': ['close', 'back', 'rounded'], 'rules': []}, 
+                            {'IPA': 'o', "classes": ["vowels"], 'types': ['close-mid', 'back', 'rounded'], 'rules': []}],
+                        'ɐ': [
+                            {'IPA': 'ɜ', "classes": ["vowels"], 'types': ['open-mid', 'central', 'unrounded'], 'rules': []} ,
+                            {'IPA': 'ä', "classes": ["vowels"], 'types': ['open', 'central', 'unrounded'], 'rules': []}],
+                        'ə': [
+                            {'IPA': 'ɘ', "classes": ["vowels"], 'types': ['close-mid', 'central', 'unrounded'], 'rules': []},
+                            {'IPA': 'ɜ', "classes": ["vowels"], 'types': ['open-mid', 'central', 'unrounded'], 'rules': []}]
                       }
 
 
@@ -104,6 +135,46 @@ def vowel_fronting(rules, word, fronting=True, strong=False):
             word["syllables"][i]["syllable"] = "".join(IPA["IPA"] for IPA in syllable["sounds"])
 
     return word
+
+
+def vowel_closing(rules, word, closing=True, strong=False):
+    
+    direction = "closing" if closing else "opening"
+    step = -2 if strong else -1
+    step *= -1 if not closing else 1
+
+    for i, syllable in enumerate(word["syllables"]):
+        for j, sound in enumerate(syllable["sounds"]):
+            if "vowels" in sound["classes"]:
+                indexes = (i, j)
+
+                if not sound_validation.sound_rule_main_distributor(rules[direction], indexes, word):
+                    continue
+
+                matching = set(sound["types"]) & set(closing_variables)
+
+                if sound["IPA"] in closing_exceptions:
+                    step = 0 if closing else 1
+                    syllable["sounds"][j] = closing_exceptions[sound["IPA"]][step]
+                    continue
+
+                vowel_place = closing_variables.index(list(matching)[0])
+                new_vowel_place = vowel_place + step
+                if new_vowel_place < 0:
+                    new_vowel_place = 0
+                if new_vowel_place > 6:
+                    new_vowel_place = 6
+                sound["types"].remove(closing_variables[vowel_place])
+                new_sound_types = sound["types"] + [closing_variables[new_vowel_place]]
+                for new_sound in sounds_list:
+                    if set(new_sound["types"]) == set(new_sound_types):
+                        syllable["sounds"][j] = new_sound
+                        break
+
+            word["syllables"][i]["syllable"] = "".join(IPA["IPA"] for IPA in syllable["sounds"])
+
+    return word
+
 
 if __name__ == "__main__":
     pass

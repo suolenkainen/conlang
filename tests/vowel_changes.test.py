@@ -247,7 +247,7 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.sound_list = [self.u_sound, self.s_sound, self.n_sound, self.ʉ_sound, self.y_sound, self.ʏ_sound, self.ɐ_sound, self.ɑ_sound]
 
     @patch('sound_validation.sound_rule_main_distributor')
-    def test_01(self, mock_sound_rule_main_distributor):
+    def test_01_fronting_back_vowel_to_center_weak_move(self, mock_sound_rule_main_distributor):
         # Fronting a back vowel to center as weak move
         
         mock_fronting_rules = {"fronting": {
@@ -264,7 +264,7 @@ class Vowel_Fronting_Tests(unittest.TestCase):
 
 
     @patch('sound_validation.sound_rule_main_distributor')
-    def test_02(self, mock_sound_rule_main_distributor):
+    def test_02_fronting_middle_vowel_to_front_weak_move(self, mock_sound_rule_main_distributor):
         # Fronting a middle vowel to front as weak (non-weak)
         
         mock_fronting_rules = {"fronting": {
@@ -280,7 +280,7 @@ class Vowel_Fronting_Tests(unittest.TestCase):
 
 
     @patch('sound_validation.sound_rule_main_distributor')
-    def test_03(self, mock_sound_rule_main_distributor):
+    def test_03_fronting_middle_vowel_to_front_strong_move_limited(self, mock_sound_rule_main_distributor):
         # Fronting a center vowel to front as strong move (exception)
         
         mock_fronting_rules = {"fronting": {
@@ -296,7 +296,7 @@ class Vowel_Fronting_Tests(unittest.TestCase):
 
 
     @patch('sound_validation.sound_rule_main_distributor')
-    def test_04(self, mock_sound_rule_main_distributor):
+    def test_04_rearing_back_vowel(self, mock_sound_rule_main_distributor):
         # Rearing back vowel
         
         mock_fronting_rules = {"rearing": {
@@ -312,7 +312,7 @@ class Vowel_Fronting_Tests(unittest.TestCase):
 
 
     @patch('sound_validation.sound_rule_main_distributor')
-    def test_05(self, mock_sound_rule_main_distributor):
+    def test_05_fronting_nearfront_vowel_to_front_weak_move_exception(self, mock_sound_rule_main_distributor):
         # Fronting a near-front vowel to front as weak (exception)
         
         mock_fronting_rules = {"fronting": {
@@ -332,7 +332,7 @@ class Vowel_Fronting_Tests(unittest.TestCase):
 
 
     @patch('sound_validation.sound_rule_main_distributor')
-    def test_06(self, mock_sound_rule_main_distributor):
+    def test_06_rearing_ɐ(self, mock_sound_rule_main_distributor):
         # Rearing ɐ-sound
         
         mock_fronting_rules = {"rearing": {
@@ -348,7 +348,7 @@ class Vowel_Fronting_Tests(unittest.TestCase):
 
 
     @patch('sound_validation.sound_rule_main_distributor')
-    def test_07(self, mock_sound_rule_main_distributor):
+    def test_07_rearing_non_match_rule(self, mock_sound_rule_main_distributor):
         # Rearing non-matching rule
         
         mock_fronting_rules = {"rearing": {
@@ -363,6 +363,147 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.assertEqual(result, self.sɑnsun_word)
 
 
+
+class Vowel_Closing_Tests(unittest.TestCase):
+
+    def setUp(self):
+        
+        self.s_sound = {"IPA": "s", "classes": ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], "types": ["voiceless", "frontcon", "alveolar"], "rules": []}
+        self.n_sound = {"IPA": "n", "classes": ["nasals", "occlusives"], "types": ["voiced", "frontcon", "alveloar"], "rules": []}
+        self.a_sound = {'IPA': 'a', "classes": ["vowels"], 'types': ['open', 'front', 'unrounded'], 'rules': []}
+        self.æ_sound = {'IPA': 'æ', "classes": ["vowels"], 'types': ['near-open', 'front', 'unrounded'], 'rules': []}
+        self.ɪ_sound = {'IPA': 'ɪ', "classes": ["vowels"], 'types': ['near-close', 'near-front', 'unrounded'], 'rules': []}
+        self.ə_sound = {'IPA': 'ə', "classes": ["vowels"], 'types': ['mid', 'central', 'unrounded'], 'rules': []}
+        self.ɐ_sound = {'IPA': 'ɐ', "classes": ["vowels"], 'types': ['near-open', 'central'], 'rules': []}
+        self.i_sound = {'IPA': 'i', "classes": ["vowels"], 'types': ['close', 'front', 'unrounded'], 'rules': []}
+        self.ɘ_sound = {'IPA': 'ɘ', "classes": ["vowels"], 'types': ['close-mid', 'central', 'unrounded'], 'rules': []}
+        self.ɜ_sound = {'IPA': 'ɜ', "classes": ["vowels"], 'types': ['open-mid', 'central', 'unrounded'], 'rules': []}
+        self.e_sound = {'IPA': 'e', "classes": ["vowels"], 'types': ['close-mid', 'front', 'unrounded'], 'rules': []}
+        self.ʌ_sound = {'IPA': 'ʌ', "classes": ["vowels"], 'types': ['open-mid', 'back', 'unrounded','low'], 'rules': []}
+        self.ɑ_sound = {'IPA': 'ɑ', "classes": ["vowels"], 'types': ['open', 'back', 'unrounded'], 'rules': []}
+
+        self.san_syllable = {'stress': None, 'legal': True, 'syllable': 'san', 'sounds': [self.s_sound, self.a_sound, self.n_sound]}
+        self.sæn_syllable = {'stress': None, 'legal': True, 'syllable': 'sæn', 'sounds': [self.s_sound, self.æ_sound, self.n_sound]}
+        self.sin_syllable = {'stress': None, 'legal': True, 'syllable': 'sin', 'sounds': [self.s_sound, self.i_sound, self.n_sound]}
+        self.sen_syllable = {'stress': None, 'legal': True, 'syllable': 'sen', 'sounds': [self.s_sound, self.e_sound, self.n_sound]}
+        self.sʌn_syllable = {'stress': None, 'legal': True, 'syllable': 'sʌn', 'sounds': [self.s_sound, self.ʌ_sound, self.n_sound]}
+        self.sɑn_syllable = {'stress': None, 'legal': True, 'syllable': 'sɑn', 'sounds': [self.s_sound, self.ɑ_sound, self.n_sound]}
+        self.sɪ_syllable = {'stress': None, 'legal': True, 'syllable': 'sɪ', 'sounds': [self.s_sound, self.ɪ_sound]}
+        self.nə_syllable = {'stress': None, 'legal': True, 'syllable': 'nə', 'sounds': [self.n_sound, self.ə_sound]}
+        self.sɐ_syllable = {'stress': None, 'legal': True, 'syllable': 'sɐ', 'sounds': [self.s_sound, self.ɐ_sound]}
+        self.si_syllable = {'stress': None, 'legal': True, 'syllable': 'si', 'sounds': [self.s_sound, self.i_sound]}
+        self.nɘ_syllable = {'stress': None, 'legal': True, 'syllable': 'nɘ', 'sounds': [self.n_sound, self.ɘ_sound]}
+        self.sɜ_syllable = {'stress': None, 'legal': True, 'syllable': 'sɜ', 'sounds': [self.s_sound, self.ɜ_sound]}
+
+        self.san_word = {"syllables": [self.san_syllable]}
+        self.sæn_word = {"syllables": [self.sæn_syllable]}
+        self.sen_word = {"syllables": [self.sen_syllable]}
+        self.sin_word = {"syllables": [self.sin_syllable]}
+        self.sʌn_word = {"syllables": [self.sʌn_syllable]}
+        self.sɑn_word = {"syllables": [self.sɑn_syllable]}
+        self.sɪnəsɐ_word = {"syllables": [self.sɪ_syllable, self.nə_syllable, self.sɐ_syllable]}
+        self.sinəsɐ_word = {"syllables": [self.si_syllable, self.nɘ_syllable, self.sɜ_syllable]}
+
+        self.sound_list = [self.s_sound, self.n_sound, self.a_sound, self.e_sound, self.æ_sound, self.ɪ_sound, self.ə_sound,self.ɐ_sound, self.i_sound, self.ɘ_sound, self.ɜ_sound, self.ʌ_sound, self.ɑ_sound]
+
+
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_01_closing_open_vowel_to_nearopen_weak_move(self, mock_sound_rule_main_distributor):
+        # Closing an open vowel to near-open as weak move
+        
+        mock_closing_rules = {"closing": {
+                                "sound itself": {
+                                    "IPA": [],
+                                    "types": [['close', 'back', 'rounded']]}}}     
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_closing(mock_closing_rules, self.san_word, True, False)
+
+        self.assertEqual(result, self.sæn_word)
+
+
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_02_closing_closemid_vowel_to_close_weak_move_skip(self, mock_sound_rule_main_distributor):
+        # Closing an open vowel to near-open as weak move
+        
+        mock_closing_rules = {"closing": {
+                                "sound itself": {
+                                    "IPA": ["e"]}}}
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_closing(mock_closing_rules, self.sen_word, True, False)
+
+        self.assertEqual(result, self.sin_word)
+
+
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_03_closing_closemid_vowel_to_close_strong_move(self, mock_sound_rule_main_distributor):
+        # Closing an open vowel to near-open as weak move
+        
+        mock_closing_rules = {"closing": {
+                                "sound itself": {
+                                    "IPA": ["e"]}}}     
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_closing(mock_closing_rules, self.sen_word, True, True)
+
+        self.assertEqual(result, self.sin_word)
+
+
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_04_opening_openmid_vowel_to_open_weak_move_causes_skip(self, mock_sound_rule_main_distributor):
+        # Closing an open vowel to near-open as weak move
+        
+        mock_closing_rules = {"opening": {
+                                "sound itself": {
+                                    "IPA": ["ʌ"]}}}     
+
+        mock_sound_rule_main_distributor.side_effect = [True]
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_closing(mock_closing_rules, self.sʌn_word, False, False)
+
+        self.assertEqual(result, self.sɑn_word)
+
+
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_05_closing_ɪ_ə_and_ɐ_exception(self, mock_sound_rule_main_distributor):
+        # Closing an open vowel to near-open as weak move
+        
+        mock_closing_rules = {"closing": {
+                                "sound itself": {
+                                    "classes": [["vowels"]]}}}     
+
+        mock_sound_rule_main_distributor.side_effect = [True, True, True]   
+
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_closing(mock_closing_rules, self.sɪnəsɐ_word, True, False)
+
+        self.assertEqual(result, self.sinəsɐ_word)
+
+
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_06_missing_target_sound_from_list_skip_to_closest_next(self, mock_sound_rule_main_distributor):
+        # Closing an open vowel to near-open as weak move
+        
+        mock_closing_rules = {"closing": {
+                                "sound itself": {
+                                    "IPA": ["a"]}}}
+        
+        sound_list = [self.s_sound, self.n_sound, self.a_sound, self.i_sound]
+
+        mock_sound_rule_main_distributor.side_effect = [True]
+
+        with patch('vowel_changes.sounds_list', sound_list):
+            result = vowel_changes.vowel_closing(mock_closing_rules, self.san_word, True, False)
+
+        self.assertEqual(result, self.sin_word)
 
 if __name__ == '__main__':
     unittest.main()
