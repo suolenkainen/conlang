@@ -477,11 +477,39 @@ class Before_Sounds_Validity_Check(unittest.TestCase):
         self.assertEqual(result, True)
 
 
-class Sound_Rule_Main_Distributor(unittest.TestCase):
-    def setUp(self) -> None:
-        return super().setUp()
+class Sound_Rule_Main_Distributor_not_mocked(unittest.TestCase):
 
-# TODO kaikille, missä on nykyään class ja muut, uusi testi (osasta voi poistaa sen, mutta nyt on kaikissa varuilta)
+    def setUp(self):
+        
+        self.s_sound = {"IPA": "s", "classes": ["sibilants", "stridents", "obstruents", "fricatives", "continuants"], "types": ["voiceless", "frontcon", "alveolar"], "rules": []}
+        self.u_sound = {'IPA': 'u', "classes": ["vowels"], 'types': ['close', 'back', 'rounded'], 'rules': []}
+        self.n_sound = {"IPA": "n", "classes": ["nasals", "occlusives"], "types": ["voiced", "frontcon", "alveloar"], "rules": []}
+
+        self.sun_syllable = {'stress': None, 'legal': True, 'syllable': 'sun', 'sounds': [self.s_sound, self.u_sound, self.n_sound]}
+
+        self.sun_word = {"syllables": [self.sun_syllable]}
+
+
+    def test_01_test_returning_True(self):
+        mock_rules = {"before": {
+                    "types": [["voiced"]]}}
+        mock_indexes = (0, 1)
+
+        result = sound_validation.sound_rule_main_distributor(mock_rules, mock_indexes, self.sun_word)
+
+        self.assertEqual(result, True)
+
+
+    def test_02_test_returning_False(self):
+        mock_rules = {"after sound": {
+                    "IPA": ["f"]}}
+        mock_indexes = (0, 1)
+
+        result = sound_validation.sound_rule_main_distributor(mock_rules, mock_indexes, self.sun_word)
+
+        self.assertEqual(result, False)
+
+        
 
 
 if __name__ == '__main__':

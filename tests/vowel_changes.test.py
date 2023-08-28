@@ -240,6 +240,8 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.syn_word = {"syllables": [self.syn_syllable]}
         self.sʏn_word = {"syllables": [self.sʏn_syllable]}
         self.sɐn_word = {"syllables": [self.sɐn_syllable]}
+        self.sɐnsun_word = {"syllables": [self.sɐn_syllable, self.sun_syllable]}
+        self.sɑnsun_word = {"syllables": [self.sɑn_syllable, self.sun_syllable]}
         self.sɑn_word = {"syllables": [self.sɑn_syllable]}
 
         self.sound_list = [self.u_sound, self.s_sound, self.n_sound, self.ʉ_sound, self.y_sound, self.ʏ_sound, self.ɐ_sound, self.ɑ_sound]
@@ -353,12 +355,12 @@ class Vowel_Fronting_Tests(unittest.TestCase):
                                 "sound itself": {
                                     "IPA": ["q"]}}}
 
-        mock_sound_rule_main_distributor.side_effect = [True]   
+        mock_sound_rule_main_distributor.side_effect = [True, False]
         
         with patch('vowel_changes.sounds_list', self.sound_list):
-            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sɐn_word, False, True)
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sɐnsun_word, False, True)
 
-        self.assertEqual(result, self.sɐn_word)
+        self.assertEqual(result, self.sɑnsun_word)
 
 
 

@@ -36,7 +36,7 @@ def sound_rule_main_distributor(rules, indexes, word):
         if validity_checker_map.get(category)(rules[category], indexes, word):
             return True
     
-    return True
+    return False
 
 
 # Check is sound change is valid when the target is the sound itself

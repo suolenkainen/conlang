@@ -82,11 +82,12 @@ def vowel_fronting(rules, word, fronting=True, strong=False):
                     continue
 
                 matching = set(sound["types"]) & set(fronting_variables)
+
                 if matching == set() or sound["IPA"] == 'ɐ':
-                    fronting_exceptions[sound["IPA"]]
                     step = 0 if fronting else 1
                     syllable["sounds"][j] = fronting_exceptions[sound["IPA"]][step]
                     continue
+
                 vowel_place = fronting_variables.index(list(matching)[0])
                 new_vowel_place = vowel_place + step
                 if new_vowel_place < 0:
@@ -102,7 +103,7 @@ def vowel_fronting(rules, word, fronting=True, strong=False):
 
             word["syllables"][i]["syllable"] = "".join(IPA["IPA"] for IPA in syllable["sounds"])
 
-        return word
+    return word
 
 if __name__ == "__main__":
     pass
