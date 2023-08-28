@@ -3,6 +3,7 @@
 # https://github.com/suolenkainen/conlang
 
 
+# A group of sound category checkers
 def IPA(sound_IPA, IPA_list):
     if sound_IPA in IPA_list:
         return True
@@ -28,8 +29,8 @@ checker_map = {
     "classes": classes}
 
 
+# Distribute the validity checks for sound changes
 def sound_rule_main_distributor(rules, indexes, word):
-
 
     for category in rules:
         if validity_checker_map.get(category)(rules[category], indexes, word):
@@ -37,6 +38,8 @@ def sound_rule_main_distributor(rules, indexes, word):
     
     return True
 
+
+# Check is sound change is valid when the target is the sound itself
 def sound_itself_validity_check(sound_itself_rules, indexes, word):
     i, j = indexes
     sound = word["syllables"][i]["sounds"][j]
@@ -48,6 +51,7 @@ def sound_itself_validity_check(sound_itself_rules, indexes, word):
     return False   
 
 
+# Check is sound change is valid when the target is affected by the sound after
 def after_sound_validity_check(after_sound_rules, indexes, word):
     i, j = indexes
     if i == 0 and j == 0:
@@ -64,6 +68,7 @@ def after_sound_validity_check(after_sound_rules, indexes, word):
     return False
 
 
+# Check is sound change is valid when the target is affected by the previous sound
 def before_sound_validity_check(before_rule, indexes, word):
     i, j = indexes
     syllable_count = len(word["syllables"])
@@ -84,6 +89,7 @@ def before_sound_validity_check(before_rule, indexes, word):
     return False   
 
 
+# Check is sound change is valid when the target is between two sounds
 def between_sounds_validity_check(between_rules, indexes, word):
     i, j = indexes
     syllable_count = len(word["syllables"])
@@ -97,7 +103,7 @@ def between_sounds_validity_check(between_rules, indexes, word):
             return True
     return False   
 
-
+# A map that helps in the distribution of sound checks
 validity_checker_map = {
     "sound itself": sound_itself_validity_check,
     "after sound":  after_sound_validity_check,

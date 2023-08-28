@@ -21,6 +21,7 @@ fronting_variables = [
     'central', 
     'back']
 
+# Map for exceptions of vowel shifting
 fronting_exceptions = {
                         'ɪ': [
                             {'IPA': 'i', "classes": ["vowels"], 'types': ['close', 'front', 'unrounded'], 'rules': []}, 
@@ -37,6 +38,7 @@ fronting_exceptions = {
                       }
 
 
+# Transfor the vowel's roundedness when there is a comparable sound available
 def vowel_roundness(word, rules=roundness_rules, unround=False):
 
     change_type_1 = "unrounded" if not unround else "rounded"
@@ -47,17 +49,8 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
         for j, sound in enumerate(syllable["sounds"]):
             indexes = (i, j)
 
-            if "sound itself" in rules[rounding_rule] and sound_validation.sound_itself_validity_check(rules[rounding_rule]["sound itself"], indexes, word):
-                pass 
-            elif "after sound" in rules[rounding_rule] and sound_validation.after_sound_validity_check(rules[rounding_rule]["after sound"], indexes, word):
-                pass 
-            elif "between" in rules[rounding_rule] and sound_validation.between_sounds_validity_check(rules[rounding_rule]["between"], indexes, word):
-                pass
-            elif "before" in rules[rounding_rule] and sound_validation.before_sound_validity_check(rules[rounding_rule]["before"], indexes, word):
-                pass
-            else:
-                continue
-            
+            if not sound_validation.sound_rule_main_distributor(rules[rounding_rule], indexes, word):
+                continue            
             
             if change_type_1 in sound["types"]:
                 new_sound_types = sound["types"].copy()
@@ -73,6 +66,7 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
     return word
 
 
+# Shift the vowel forward of backward
 def vowel_fronting(rules, word, fronting=True, strong=False):
 
     direction = "fronting" if fronting else "rearing"

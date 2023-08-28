@@ -54,14 +54,14 @@ class Vowel_Rounding(unittest.TestCase):
         self.sound_list = [self.u_sound, self.y_sound, self.i_sound, self.ɯ_sound, self.s_sound, self.n_sound, self.ɐ_sound, self.e_sound, self.ø_sound]
 
 
-    @patch('sound_validation.between_sounds_validity_check')
-    def test_01_rounding_between_any_consonant(self, mock_between_sounds_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_01_rounding_between_any_consonant(self, mock_sound_rule_main_distributor):
         
         mock_roundness_rules = {"rounding": {
                                     "between": {}}, 
                                 "unrounding": {}}
-        
-        mock_between_sounds_validity_check.side_effect = [False, True, False, False, False]
+
+        mock_sound_rule_main_distributor.side_effect = [False, True, False, False, False]  
 
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.sɯnni_word, mock_roundness_rules)
@@ -69,14 +69,14 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.sunni_word)
 
 
-    @patch('sound_validation.after_sound_validity_check')
-    def test_02_unrounding_with_any_consonant(self, mock_after_sound_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_02_unrounding_with_any_consonant(self, mock_sound_rule_main_distributor):
         
         mock_roundness_rules = {"unrounding": {
                                     "after sound": {}}, 
                                 "rounding": {}}
-        
-        mock_after_sound_validity_check.side_effect = [False, True, False, True, True]
+
+        mock_sound_rule_main_distributor.side_effect = [False, True, False, False, False] 
 
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.sunni_word, mock_roundness_rules, True) #FTFTT
@@ -84,16 +84,14 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.sɯnni_word)
 
 
-    @patch('sound_validation.after_sound_validity_check')
-    @patch('sound_validation.between_sounds_validity_check')
-    def test_03_rounding_with_non_roundable_vowel_after_consonant(self, mock_after_sound_validity_check, mock_between_sounds_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_03_rounding_with_non_roundable_vowel_after_consonant(self, mock_sound_rule_main_distributor):
         
         mock_roundness_rules = {"rounding": {}, 
                                 "unrounding": {
                                     "after sound": {}}}
-        
-        mock_after_sound_validity_check.side_effect = [False, False, False]
-        mock_between_sounds_validity_check.side_effect = [False, False, False]
+
+        mock_sound_rule_main_distributor.side_effect = [False, False, False]
 
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.sɐs_word, mock_roundness_rules, True)
@@ -101,14 +99,14 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.sɐs_word)
 
 
-    @patch('sound_validation.after_sound_validity_check')
-    def test_04_rounding_with_non_roundable_vowel_after_any_vowel(self, mock_after_sound_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_04_rounding_with_non_roundable_vowel_after_any_vowel(self, mock_sound_rule_main_distributor):
         
         mock_roundness_rules = {"rounding": {
                                     "after sound": {}}, 
                                 "unrounding": {}}
-        
-        mock_after_sound_validity_check.side_effect = [False, True, True, True]
+
+        mock_sound_rule_main_distributor.side_effect = [False, True, True, True]
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.nyis_word, mock_roundness_rules)  #FTTT 
@@ -116,9 +114,8 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.nyys_word)
 
 
-    @patch('sound_validation.after_sound_validity_check')
-    @patch('sound_validation.between_sounds_validity_check')
-    def test_05_rounding_with_with_placement_rules(self, mock_after_sound_validity_check, mock_between_sounds_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_05_rounding_with_with_placement_rules(self, mock_sound_rule_main_distributor):
         
         mock_roundness_rules = {"rounding": {
                                     "after sound": {
@@ -131,9 +128,8 @@ class Vowel_Rounding(unittest.TestCase):
                                         "trailing": {
                                             "types": [["frontcon"]]}}}, 
                                 "unrounding": {}}
-        
-        mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
-        mock_between_sounds_validity_check.side_effect = [False, False, False, False, False, True, False]
+
+        mock_sound_rule_main_distributor.side_effect = [False, True, False, False, False, True, False]
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.niissɯs_word, mock_roundness_rules)  #FTTT 
@@ -141,10 +137,8 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.nyissus_word)
 
 
-    @patch('sound_validation.between_sounds_validity_check')
-    @patch('sound_validation.after_sound_validity_check')
-    @patch('sound_validation.sound_itself_validity_check')
-    def test_06_rounding_with_with_multiple_rules(self, mock_sound_itself_validity_check, mock_after_sound_validity_check, mock_between_sounds_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_06_rounding_with_with_multiple_rules(self, mock_sound_rule_main_distributor):
 
         mock_roundness_rules = {"rounding": {
                                     "after sound": {}, 
@@ -158,10 +152,8 @@ class Vowel_Rounding(unittest.TestCase):
                                     "sound itself": {
                                         "IPA": ["e"]}}, 
                                 "unrounding": {}}
-        
-        mock_sound_itself_validity_check.side_effect = [False, False, True, False, False, False, False]
-        mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
-        mock_between_sounds_validity_check.side_effect = [False, False, False, True, False, False, False]
+
+        mock_sound_rule_main_distributor.side_effect = [False, True, True, False, False, True, False]
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.niessɯs_word, mock_roundness_rules)
@@ -169,11 +161,8 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.nyøssus_word)
 
 
-    @patch('sound_validation.between_sounds_validity_check')
-    @patch('sound_validation.after_sound_validity_check')
-    @patch('sound_validation.sound_itself_validity_check')
-    @patch('sound_validation.before_sound_validity_check')
-    def test_07_rounding_with_with_multiple_rules_and_classes(self, mock_before_sound_validity_check, mock_sound_itself_validity_check, mock_after_sound_validity_check, mock_between_sounds_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_07_rounding_with_with_multiple_rules_and_classes(self, mock_sound_rule_main_distributor):
 
         mock_roundness_rules = {"rounding": {
                                     "after sound": {
@@ -189,11 +178,8 @@ class Vowel_Rounding(unittest.TestCase):
                                         "IPA": ["e"],
                                         "classes": []}}, 
                                 "unrounding": {}}
-        
-        mock_before_sound_validity_check.side_effect = [False, False, False, False, False, False, False]
-        mock_sound_itself_validity_check.side_effect = [False, False, True, False, False, False, False]
-        mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
-        mock_between_sounds_validity_check.side_effect = [False, False, False, True, False, False, False]
+
+        mock_sound_rule_main_distributor.side_effect = [False, True, True, True, False, True, False]
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.niessɯs_word, mock_roundness_rules)
@@ -201,11 +187,8 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.nyøssus_word)
 
 
-    @patch('sound_validation.between_sounds_validity_check')
-    @patch('sound_validation.after_sound_validity_check')
-    @patch('sound_validation.sound_itself_validity_check')
-    @patch('sound_validation.before_sound_validity_check')
-    def test_08_rounding_with_with_multiple_rules_and_classes_match(self, mock_before_sound_validity_check, mock_sound_itself_validity_check, mock_after_sound_validity_check, mock_between_sounds_validity_check):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_08_rounding_with_with_multiple_rules_and_classes_match(self, mock_sound_rule_main_distributor):
 
         mock_roundness_rules = {"rounding": {
                                     "after sound": {
@@ -223,11 +206,8 @@ class Vowel_Rounding(unittest.TestCase):
                                     "before": {
                                         "classes": [["nasals"]]}}, 
                                 "unrounding": {}}
-        
-        mock_before_sound_validity_check.side_effect = [False, False, False, True, False, False, False]
-        mock_sound_itself_validity_check.side_effect = [False, False, True, False, False, False, False]
-        mock_after_sound_validity_check.side_effect = [False, True, False, False, False, False, False]
-        mock_between_sounds_validity_check.side_effect = [False, False, False, False, False, False, False]
+
+        mock_sound_rule_main_distributor.side_effect = [False, True, True, False, False, True, False]
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_roundness(self.niessɯn_word, mock_roundness_rules)
@@ -264,13 +244,16 @@ class Vowel_Fronting_Tests(unittest.TestCase):
 
         self.sound_list = [self.u_sound, self.s_sound, self.n_sound, self.ʉ_sound, self.y_sound, self.ʏ_sound, self.ɐ_sound, self.ɑ_sound]
 
-    ### Lisää säännöt typelle, IPAlle ja classeille
-    def test_01(self):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_01(self, mock_sound_rule_main_distributor):
         # Fronting a back vowel to center as weak move
         
         mock_fronting_rules = {"fronting": {
                                 "sound itself": {
-                                    "IPA": ["u"]}}}        
+                                    "IPA": [],
+                                    "types": [['close', 'back', 'rounded']]}}}     
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
 
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sun_word, True, False)
@@ -278,12 +261,15 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.assertEqual(result, self.sʉn_word)
 
 
-    def test_02(self):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_02(self, mock_sound_rule_main_distributor):
         # Fronting a middle vowel to front as weak (non-weak)
         
         mock_fronting_rules = {"fronting": {
                                 "sound itself": {
-                                    "IPA": ["u"]}}}
+                                    "classes": [["vowels"]]}}} 
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
 
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sun_word, True, True)
@@ -291,12 +277,15 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.assertEqual(result, self.syn_word)
 
 
-    def test_03(self):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_03(self, mock_sound_rule_main_distributor):
         # Fronting a center vowel to front as strong move (exception)
         
         mock_fronting_rules = {"fronting": {
-                                "sound itself": {
-                                    "IPA": ["ʉ"]}}}
+                                "before": {
+                                    "IPA": ["n"]}}}
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
 
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sʉn_word, True, True)
@@ -304,26 +293,35 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.assertEqual(result, self.syn_word)
 
 
-    def test_04(self):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_04(self, mock_sound_rule_main_distributor):
         # Rearing back vowel
         
         mock_fronting_rules = {"rearing": {
-                                "sound itself": {
-                                    "IPA": ["u"]}}}
-        
+                                "after sound": {
+                                    "IPA": ["s"]}}}
 
+        mock_sound_rule_main_distributor.side_effect = [True]   
+        
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sun_word, False, False)
 
         self.assertEqual(result, self.sun_word)
 
 
-    def test_05(self):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_05(self, mock_sound_rule_main_distributor):
         # Fronting a near-front vowel to front as weak (exception)
         
         mock_fronting_rules = {"fronting": {
-                                "sound itself": {
-                                    "IPA": ["ʏ"]}}}
+                                "between": {
+                                    "preceeding": {
+                                        "IPA": ["s"]},
+                                    "trailing": {
+                                        "classes": [["nasals"]]}
+                                    }}}
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sʏn_word, True, True)
@@ -331,12 +329,15 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.assertEqual(result, self.syn_word)
 
 
-    def test_06(self):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_06(self, mock_sound_rule_main_distributor):
         # Rearing ɐ-sound
         
         mock_fronting_rules = {"rearing": {
                                 "sound itself": {
                                     "IPA": ["ɐ"]}}}
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sɐn_word, False, True)
@@ -344,12 +345,15 @@ class Vowel_Fronting_Tests(unittest.TestCase):
         self.assertEqual(result, self.sɑn_word)
 
 
-    def test_08(self):
+    @patch('sound_validation.sound_rule_main_distributor')
+    def test_07(self, mock_sound_rule_main_distributor):
         # Rearing non-matching rule
         
         mock_fronting_rules = {"rearing": {
                                 "sound itself": {
                                     "IPA": ["q"]}}}
+
+        mock_sound_rule_main_distributor.side_effect = [True]   
         
         with patch('vowel_changes.sounds_list', self.sound_list):
             result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sɐn_word, False, True)
