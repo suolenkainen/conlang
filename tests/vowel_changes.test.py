@@ -379,7 +379,7 @@ class Vowel_Closing_Tests(unittest.TestCase):
         self.ɘ_sound = {'IPA': 'ɘ', "classes": ["vowels"], 'types': ['close-mid', 'central', 'unrounded'], 'rules': []}
         self.ɜ_sound = {'IPA': 'ɜ', "classes": ["vowels"], 'types': ['open-mid', 'central', 'unrounded'], 'rules': []}
         self.e_sound = {'IPA': 'e', "classes": ["vowels"], 'types': ['close-mid', 'front', 'unrounded'], 'rules': []}
-        self.ʌ_sound = {'IPA': 'ʌ', "classes": ["vowels"], 'types': ['open-mid', 'back', 'unrounded','low'], 'rules': []}
+        self.ʌ_sound = {'IPA': 'ʌ', "classes": ["vowels"], 'types': ['open-mid', 'back', 'unrounded'], 'rules': []}
         self.ɑ_sound = {'IPA': 'ɑ', "classes": ["vowels"], 'types': ['open', 'back', 'unrounded'], 'rules': []}
 
         self.san_syllable = {'stress': None, 'legal': True, 'syllable': 'san', 'sounds': [self.s_sound, self.a_sound, self.n_sound]}
@@ -505,5 +505,7 @@ class Vowel_Closing_Tests(unittest.TestCase):
 
         self.assertEqual(result, self.sin_word)
 
+
 if __name__ == '__main__':
     unittest.main()
+ 

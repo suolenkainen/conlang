@@ -78,6 +78,18 @@
       },
       "degemination": {
 
-      }
+      },
+    "fronting variables": [
+      "front", 
+      "central", 
+      "back"],
+    "closing variables": [
+      "close", 
+      "near-close", 
+      "close-mid",
+      "mid",
+      "open-mid",
+      "near-open",
+      "open"]
+    }
   }
-}

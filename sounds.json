@@ -54,7 +54,7 @@
         "vowels"
       ],
       "types": [
-        "closed",
+        "close",
         "back",
         "unrounded"
       ],
@@ -241,18 +241,6 @@
       "rules": []
     },
     {
-      "IPA": "\u025b",
-      "classes": [
-        "vowels"
-      ],
-      "types": [
-        "open-mid",
-        "front",
-        "unrounded"
-      ],
-      "rules": []
-    },
-    {
       "IPA": "\u0153",
       "classes": [
         "vowels"
@@ -261,6 +249,18 @@
         "mid",
         "front",
         "rounded"
+      ],
+      "rules": []
+    },
+    {
+      "IPA": "\u025b",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "open-mid",
+        "front",
+        "unrounded"
       ],
       "rules": []
     },
@@ -326,6 +326,17 @@
       "rules": []
     },
     {
+      "IPA": "\u0250",
+      "classes": [
+        "vowels"
+      ],
+      "types": [
+        "near-open",
+        "central"
+      ],
+      "rules": []
+    },
+    {
       "IPA": "a",
       "classes": [
         "vowels"
@@ -350,23 +361,13 @@
       "rules": []
     },
     {
-      "IPA": "\u0250",
-      "classes": [
-        "vowels"
-      ],
-      "types": [
-        "near-open",
-        "central"
-      ],
-      "rules": []
-    },
-    {
       "IPA": "\u00e4",
       "classes": [
         "vowels"
       ],
       "types": [
-        "open central",
+        "open",
+        "central",
         "unrounded"
       ],
       "rules": []
@@ -377,7 +378,8 @@
         "vowels"
       ],
       "types": [
-        "open back",
+        "open",
+        "back",
         "unrounded"
       ],
       "rules": []
