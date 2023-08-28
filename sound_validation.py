@@ -28,6 +28,15 @@ checker_map = {
     "classes": classes}
 
 
+def sound_rule_main_distributor(rules, indexes, word):
+
+
+    for category in rules:
+        if validity_checker_map.get(category)(rules[category], indexes, word):
+            return True
+    
+    return True
+
 def sound_itself_validity_check(sound_itself_rules, indexes, word):
     i, j = indexes
     sound = word["syllables"][i]["sounds"][j]
@@ -87,3 +96,15 @@ def between_sounds_validity_check(between_rules, indexes, word):
         if before_sound_validity_check(between_rules["trailing"], indexes, word):
             return True
     return False   
+
+
+validity_checker_map = {
+    "sound itself": sound_itself_validity_check,
+    "after sound":  after_sound_validity_check,
+    "between": between_sounds_validity_check,
+    "before": before_sound_validity_check
+}
+
+
+if __name__ == "__main__":
+    pass

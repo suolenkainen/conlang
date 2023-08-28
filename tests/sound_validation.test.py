@@ -477,6 +477,9 @@ class Before_Sounds_Validity_Check(unittest.TestCase):
         self.assertEqual(result, True)
 
 
+class Sound_Rule_Main_Distributor(unittest.TestCase):
+    def setUp(self) -> None:
+        return super().setUp()
 
 # TODO kaikille, missä on nykyään class ja muut, uusi testi (osasta voi poistaa sen, mutta nyt on kaikissa varuilta)
 
