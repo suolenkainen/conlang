@@ -235,7 +235,7 @@ class Vowel_Rounding(unittest.TestCase):
         self.assertEqual(result, self.nyøssun_word)
 
 
-class Vowel_Fronting(unittest.TestCase):
+class Vowel_Fronting_Tests(unittest.TestCase):
 
     def setUp(self):
         
@@ -268,13 +268,12 @@ class Vowel_Fronting(unittest.TestCase):
     def test_01(self):
         # Fronting a back vowel to center as weak move
         
-        # mock_roundness_rules = {"rounding": {
-        #                             "between": {}}, 
-        #                         "unrounding": {}}
-        
+        mock_fronting_rules = {"fronting": {
+                                "sound itself": {
+                                    "IPA": ["u"]}}}        
 
         with patch('vowel_changes.sounds_list', self.sound_list):
-            result = vowel_changes.vowel_fronting(self.sun_word, True, False)
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sun_word, True, False)
 
         self.assertEqual(result, self.sʉn_word)
 
@@ -282,9 +281,12 @@ class Vowel_Fronting(unittest.TestCase):
     def test_02(self):
         # Fronting a middle vowel to front as weak (non-weak)
         
+        mock_fronting_rules = {"fronting": {
+                                "sound itself": {
+                                    "IPA": ["u"]}}}
 
         with patch('vowel_changes.sounds_list', self.sound_list):
-            result = vowel_changes.vowel_fronting(self.sun_word, True, True)
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sun_word, True, True)
 
         self.assertEqual(result, self.syn_word)
 
@@ -292,12 +294,12 @@ class Vowel_Fronting(unittest.TestCase):
     def test_03(self):
         # Fronting a center vowel to front as strong move (exception)
         
-        # mock_roundness_rules = {"rounding": {
-        #                             "between": {}}, 
-        #                         "unrounding": {}}
+        mock_fronting_rules = {"fronting": {
+                                "sound itself": {
+                                    "IPA": ["ʉ"]}}}
 
         with patch('vowel_changes.sounds_list', self.sound_list):
-            result = vowel_changes.vowel_fronting(self.sʉn_word, True, True)
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sʉn_word, True, True)
 
         self.assertEqual(result, self.syn_word)
 
@@ -305,13 +307,13 @@ class Vowel_Fronting(unittest.TestCase):
     def test_04(self):
         # Rearing back vowel
         
-        # mock_roundness_rules = {"rounding": {
-        #                             "between": {}}, 
-        #                         "unrounding": {}}
+        mock_fronting_rules = {"rearing": {
+                                "sound itself": {
+                                    "IPA": ["u"]}}}
         
 
         with patch('vowel_changes.sounds_list', self.sound_list):
-            result = vowel_changes.vowel_fronting(self.sun_word, False, False)
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sun_word, False, False)
 
         self.assertEqual(result, self.sun_word)
 
@@ -319,12 +321,12 @@ class Vowel_Fronting(unittest.TestCase):
     def test_05(self):
         # Fronting a near-front vowel to front as weak (exception)
         
-        # mock_roundness_rules = {"rounding": {
-        #                             "between": {}}, 
-        #                         "unrounding": {}}
+        mock_fronting_rules = {"fronting": {
+                                "sound itself": {
+                                    "IPA": ["ʏ"]}}}
         
         with patch('vowel_changes.sounds_list', self.sound_list):
-            result = vowel_changes.vowel_fronting(self.sʏn_word, True, True)
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sʏn_word, True, True)
 
         self.assertEqual(result, self.syn_word)
 
@@ -332,14 +334,27 @@ class Vowel_Fronting(unittest.TestCase):
     def test_06(self):
         # Rearing ɐ-sound
         
-        # mock_roundness_rules = {"rounding": {
-        #                             "between": {}}, 
-        #                         "unrounding": {}}
+        mock_fronting_rules = {"rearing": {
+                                "sound itself": {
+                                    "IPA": ["ɐ"]}}}
         
         with patch('vowel_changes.sounds_list', self.sound_list):
-            result = vowel_changes.vowel_fronting(self.sɐn_word, False, True)
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sɐn_word, False, True)
 
         self.assertEqual(result, self.sɑn_word)
+
+
+    def test_08(self):
+        # Rearing non-matching rule
+        
+        mock_fronting_rules = {"rearing": {
+                                "sound itself": {
+                                    "IPA": ["q"]}}}
+        
+        with patch('vowel_changes.sounds_list', self.sound_list):
+            result = vowel_changes.vowel_fronting(mock_fronting_rules, self.sɐn_word, False, True)
+
+        self.assertEqual(result, self.sɐn_word)
 
 
 

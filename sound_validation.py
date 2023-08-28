@@ -28,9 +28,13 @@ checker_map = {
     "classes": classes}
 
 
-def sound_itself_validity_check(sound_itself_rules, sound):
-    for category in sound_itself_rules:
-        if checker_map.get(category)(sound[category], sound_itself_rules[category]):
+def sound_itself_validity_check(sound_itself_rules, indexes, word):
+    i, j = indexes
+    sound = word["syllables"][i]["sounds"][j]
+    rules = sound_itself_rules
+
+    for category in rules:
+        if checker_map.get(category)(sound[category], rules[category]):
             return True
     return False   
 
@@ -42,10 +46,11 @@ def after_sound_validity_check(after_sound_rules, indexes, word):
 
     t_j = j - 1
     t_i = i - 1 if t_j < 0 else i
-    sound_after_rules = word["syllables"][t_i]["sounds"][t_j]
+    sound = word["syllables"][t_i]["sounds"][t_j]
+    rules = after_sound_rules
 
-    for after_types in after_sound_rules:
-        if checker_map.get(after_types)(sound_after_rules[after_types], after_sound_rules[after_types]):
+    for category in rules:
+        if checker_map.get(category)(sound[category], rules[category]):
             return True
     return False
 
@@ -61,10 +66,11 @@ def before_sound_validity_check(before_rule, indexes, word):
     if b_j == 0 and i >= syllable_count -1:
         return False
 
-    sound_categories = word["syllables"][b_i]["sounds"][b_j]
+    sound = word["syllables"][b_i]["sounds"][b_j]
+    rules = before_rule
 
-    for category in before_rule:
-        if checker_map.get(category)(sound_categories[category], before_rule[category]):
+    for category in rules:
+        if checker_map.get(category)(sound[category], rules[category]):
             return True
     return False   
 

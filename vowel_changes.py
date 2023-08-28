@@ -36,6 +36,12 @@ fronting_exceptions = {
                             {'IPA': 'ɑ', "classes": ["vowels"], 'types': ['open', 'back', 'unrounded'], 'rules': []}]
                       }
 
+# validity_checker_map = {
+#     "sound itself": sound_validation.sound_itself_validity_check,
+#     "after sound":  sound_validation.after_sound_validity_check,
+#     "between": sound_validation.between_sounds_validity_check,
+#     "before": sound_validation.before_sound_validity_check
+# }
 
 def vowel_roundness(word, rules=roundness_rules, unround=False):
 
@@ -46,7 +52,8 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
     for i, syllable in enumerate(word["syllables"]):
         for j, sound in enumerate(syllable["sounds"]):
             indexes = (i, j)
-            if "sound itself" in rules[rounding_rule] and sound_validation.sound_itself_validity_check(rules[rounding_rule]["sound itself"], sound):
+
+            if "sound itself" in rules[rounding_rule] and sound_validation.sound_itself_validity_check(rules[rounding_rule]["sound itself"], indexes, word):
                 pass 
             elif "after sound" in rules[rounding_rule] and sound_validation.after_sound_validity_check(rules[rounding_rule]["after sound"], indexes, word):
                 pass 
@@ -56,6 +63,7 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
                 pass
             else:
                 continue
+            
             
             if change_type_1 in sound["types"]:
                 new_sound_types = sound["types"].copy()
@@ -71,17 +79,28 @@ def vowel_roundness(word, rules=roundness_rules, unround=False):
     return word
 
 
-def vowel_fronting(word, fronting=True, strong=False):
+def vowel_fronting(rules, word, fronting=True, strong=False):
 
     direction = "fronting" if fronting else "rearing"
-    direction = "rearing" if fronting else "fronting"
     step = -2 if strong else -1
     step *= -1 if not fronting else 1
     
     for i, syllable in enumerate(word["syllables"]):
         for j, sound in enumerate(syllable["sounds"]):
             if "vowels" in sound["classes"]:
-                coordinates = (i, j)
+                indexes = (i, j)
+                    
+                if "sound itself" in rules[direction] and sound_validation.sound_itself_validity_check(rules[direction]["sound itself"], indexes, word):
+                    pass 
+                elif "after sound" in rules[direction] and sound_validation.after_sound_validity_check(rules[direction]["after sound"], indexes, word):
+                    pass 
+                elif "between" in rules[direction] and sound_validation.between_sounds_validity_check(rules[direction]["between"], indexes, word):
+                    pass
+                elif "before" in rules[direction] and sound_validation.before_sound_validity_check(rules[direction]["before"], indexes, word):
+                    pass
+                else:
+                    continue
+
                 matching = set(sound["types"]) & set(fronting_variables)
                 if matching == set() or sound["IPA"] == 'ɐ':
                     fronting_exceptions[sound["IPA"]]

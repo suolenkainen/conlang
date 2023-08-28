@@ -300,9 +300,10 @@ class Sound_Itself_Validity_Check(unittest.TestCase):
                                "types": [[]],
                                "classes": []}}
         
-        sound = self.u_sound
+        word = self.sun_word
+        indexes = (0, 1)
 
-        result = sound_validation.sound_itself_validity_check(rules["sound itself"], sound)
+        result = sound_validation.sound_itself_validity_check(rules["sound itself"], indexes, word)
 
         self.assertEqual(result, True)
 
@@ -312,9 +313,10 @@ class Sound_Itself_Validity_Check(unittest.TestCase):
                     "IPA": ["y"],
                     "classes": [["consonants"]]}}
         
-        sound = self.u_sound
+        word = self.sun_word
+        indexes = (0, 1)
 
-        result = sound_validation.sound_itself_validity_check(rules["sound itself"], sound)
+        result = sound_validation.sound_itself_validity_check(rules["sound itself"], indexes, word)
 
         self.assertEqual(result, False)
 
@@ -325,9 +327,10 @@ class Sound_Itself_Validity_Check(unittest.TestCase):
                     "types": [[]],
                     "classes": []}}
         
-        sound = self.u_sound
+        word = self.sun_word
+        indexes = (0, 1)
 
-        result = sound_validation.sound_itself_validity_check(rules["sound itself"], sound)
+        result = sound_validation.sound_itself_validity_check(rules["sound itself"], indexes, word)
 
         self.assertEqual(result, True)
 
@@ -338,9 +341,10 @@ class Sound_Itself_Validity_Check(unittest.TestCase):
                     "types": [["back"]],
                     "classes": []}}
         
-        sound = self.u_sound
+        word = self.sun_word
+        indexes = (0, 1)
 
-        result = sound_validation.sound_itself_validity_check(rules["sound itself"], sound)
+        result = sound_validation.sound_itself_validity_check(rules["sound itself"], indexes, word)
 
         self.assertEqual(result, True)
 
@@ -351,9 +355,10 @@ class Sound_Itself_Validity_Check(unittest.TestCase):
                     "types": [],
                     "classes": [["vowels"]]}}
         
-        sound = self.u_sound
+        word = self.sun_word
+        indexes = (0, 1)
 
-        result = sound_validation.sound_itself_validity_check(rules["sound itself"], sound)
+        result = sound_validation.sound_itself_validity_check(rules["sound itself"], indexes, word)
 
         self.assertEqual(result, True)
 
@@ -364,9 +369,10 @@ class Sound_Itself_Validity_Check(unittest.TestCase):
                     "types": [],
                     "classes": [["occlusives"], ["vowels"]]}}
         
-        sound = self.u_sound
+        word = self.sun_word
+        indexes = (0, 1)
 
-        result = sound_validation.sound_itself_validity_check(rules["sound itself"], sound)
+        result = sound_validation.sound_itself_validity_check(rules["sound itself"], indexes, word)
 
         self.assertEqual(result, True)
 
@@ -377,9 +383,10 @@ class Sound_Itself_Validity_Check(unittest.TestCase):
                     "types": [],
                     "classes": [["stridents", "obstruents"]]}}
         
-        sound = self.s_sound
+        word = self.sun_word
+        indexes = (0, 0)
 
-        result = sound_validation.sound_itself_validity_check(rules["sound itself"], sound)
+        result = sound_validation.sound_itself_validity_check(rules["sound itself"], indexes, word)
 
         self.assertEqual(result, True)
 
